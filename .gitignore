@@ -1,0 +1,8 @@
+*.log
+.DS_Store
+bower_components
+node_modules
+bundle.js
+bundle.js.map
+
+config/config.privatekeys.js

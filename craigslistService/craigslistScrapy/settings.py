@@ -9,10 +9,10 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'craigslists'
+BOT_NAME = 'craigslistScrapy'
 
-SPIDER_MODULES = ['craigslists.spiders']
-NEWSPIDER_MODULE = 'craigslists.spiders'
+SPIDER_MODULES = ['craigslistScrapy.spiders']
+NEWSPIDER_MODULE = 'craigslistScrapy.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -64,9 +64,9 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'craigslists.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'craigslistScrapy.pipelines.CraigslistsPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

@@ -3,7 +3,7 @@ import scrapy
 class CraigsListSpider(scrapy.Spider):
     name = 'cityoncraigslist'
 
-    start_urls = ['http://sfbay.craigslist.org/search/sss?query=macbook']
+    start_urls = ['http://sfbay.craigslist.org/search/sss?query=macbook+pro+17\"']
 
     def parse(self, response):
         for href in response.css('.result-row a::attr(href)').extract():
@@ -20,19 +20,20 @@ class CraigsListSpider(scrapy.Spider):
         def extract_with_css(query):
             return response.css(query).extract_first()
 
+        dateinfo = response.css('.timeago::attr(datetime)').extract()
+        updateDate = dateinfo[2] if len(dateinfo) > 2 else ''
         postDetails = {
             'title': extract_with_css('#titletextonly::text'),
             'price': extract_with_css('.price::text'),
-            'city_name': extract_with_css('.price+small::text'),
+            'cityName': extract_with_css('.price+small::text'),
             'description': extract_with_css('#postingbody'),
-            'image_urls': response.css('a.thumb::attr(href)').extract(),
+            'imageUrls': response.css('a.thumb::attr(href)').extract(),
             'lat': extract_with_css('#map::attr(data-latitude)'),
-            'lng': extract_with_css('#map::attr(data-longitude)'),
-            'postInfo': {
-                'id': extract_with_css('.postinginfos .postinginfo::text')[9:],
-                'url': response.request.url,
-                'times': response.css('.timeago::attr(datetime)').extract()
-            },
+            'long': extract_with_css('#map::attr(data-longitude)'),
+            'postId': extract_with_css('.postinginfos .postinginfo::text')[9:],
+            'postingUrl': response.request.url,
+            'postDate': dateinfo[0],
+            'updateDate': updateDate,
             'attributes': response.css('.attrgroup').extract()
         }
 
@@ -55,11 +56,21 @@ class CraigsListSpider(scrapy.Spider):
         postDetails = response.meta['postDetails']
 
         return [{
-            'postDetails': postDetails,
-            'sellerInfo': {
-                'sellerUrl': response.meta['sellerLink'],
-                'name': extract_with_css('aside.reply-flap ul li p::text'),
-                'phone_number': extract_with_css('.reply-tel-number::text')[2:],
-                'email': extract_with_css('.reply-email-address a::attr(href)')
-            }
+            'title': postDetails.get('title',''),
+            'price': postDetails.get('price',''),
+            'cityName': postDetails.get('cityName',''),
+            'description': postDetails.get('description',''),
+            'imageUrls': postDetails.get('imageUrls',''),
+            'lat': postDetails.get('lat',''),
+            'long': postDetails.get('long',''),
+            'postId': postDetails.get('postId',''),
+            'postingUrl': postDetails.get('postingUrl',''),
+            'postDate': postDetails.get('postDate',''),
+            'updateDate': postDetails.get('updateDate',''),
+            'attributes': postDetails.get('attributes',''),
+            'sellerUrl': response.meta.get('sellerLink',''),
+            'sellerName': extract_with_css('aside.reply-flap ul li p::text'),
+            'sellerPhoneNumber': extract_with_css('.reply-tel-number::text')[2:],
+            'sellerEmail': extract_with_css('.reply-email-address a::attr(href)'),
+            'specs': []
         }]

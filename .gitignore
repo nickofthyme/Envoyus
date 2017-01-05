@@ -5,6 +5,7 @@ node_modules
 bundle.js
 bundle.js.map
 __pycache__
+*.pyc
 
 __pycache__
 

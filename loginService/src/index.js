@@ -10,8 +10,8 @@ const app = express();
 const auth = express.Router();
 const db = mongoose.connection;
 const config = require('../../config/config');
-const LOGIN_DB_URI = config.LOGIN_DB_URI;
-const APP_PORT = config.LOGIN_SERVER_PORT;
+const LOGIN_DB_URI = config.LOGIN_SERVICE.DB_URI;
+const APP_PORT = config.LOGIN_SERVICE.PORT;
 const KEYS = require('../../config/config.privatekeys.js');
 
 mongoose.connect(LOGIN_DB_URI);

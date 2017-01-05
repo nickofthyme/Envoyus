@@ -3,7 +3,7 @@ import scrapy
 class CraigsListSpider(scrapy.Spider):
     name = 'cityoncraigslist'
 
-    start_urls = ['http://sfbay.craigslist.org/search/sss?query=macbook']
+    start_urls = ['http://sfbay.craigslist.org/search/sss?query=macbook+pro+17\"']
 
     def parse(self, response):
         for href in response.css('.result-row a::attr(href)').extract():

@@ -1,0 +1,12 @@
+[
+  "https://www.amazon.com/Apple-MacBook-MD101LL-2-5GHz-Intel/dp/tech-data/B008BEYEL8%3FSubscriptionId%3DAKIAJGD4X4AREL3EVW6Q%26tag%3Dlouispvb-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB008BEYEL8",
+  "https://www.amazon.com/Apple-MacBook-MLW72LL-15-4-inch-quad-core/dp/tech-data/B01LTHXAO0%3FSubscriptionId%3DAKIAJGD4X4AREL3EVW6Q%26tag%3Dlouispvb-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB01LTHXAO0",
+  "https://www.amazon.com/Apple-MF839LL-13-3-Inch-Processor-Yosemite/dp/tech-data/B00UGBMRQ8%3FSubscriptionId%3DAKIAJGD4X4AREL3EVW6Q%26tag%3Dlouispvb-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00UGBMRQ8",
+  "https://www.amazon.com/Apple-MacBook-MLUQ2LL-13-3-inch-dual-core/dp/tech-data/B01LTHXA9A%3FSubscriptionId%3DAKIAJGD4X4AREL3EVW6Q%26tag%3Dlouispvb-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB01LTHXA9A",
+  "https://www.amazon.com/Apple-MacBook-MB990LL-13-3-Inch-Laptop/dp/tech-data/B001P05NKG%3FSubscriptionId%3DAKIAJGD4X4AREL3EVW6Q%26tag%3Dlouispvb-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001P05NKG",
+  "https://www.amazon.com/Apple-MacBook-MC118LL-15-4-Inch-Laptop/dp/tech-data/B002C744K6%3FSubscriptionId%3DAKIAJGD4X4AREL3EVW6Q%26tag%3Dlouispvb-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB002C744K6",
+  "https://www.amazon.com/MacBook-Retina-screen-Display-Assembly/dp/tech-data/B00QKOX8JU%3FSubscriptionId%3DAKIAJGD4X4AREL3EVW6Q%26tag%3Dlouispvb-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00QKOX8JU",
+  "https://www.amazon.com/MacBook-Pro-MF839LL-13-3-Inch-Processor/dp/tech-data/B01LZMLBNI%3FSubscriptionId%3DAKIAJGD4X4AREL3EVW6Q%26tag%3Dlouispvb-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB01LZMLBNI",
+  "https://www.amazon.com/TopCase-Wireless-Keyboard-Macbook-13-Inch/dp/tech-data/B00SHZRIA0%3FSubscriptionId%3DAKIAJGD4X4AREL3EVW6Q%26tag%3Dlouispvb-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00SHZRIA0",
+  "https://www.amazon.com/Apple-MacBook-Pro-15-4-Laptop/dp/tech-data/B000BNHM0C%3FSubscriptionId%3DAKIAJGD4X4AREL3EVW6Q%26tag%3Dlouispvb-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000BNHM0C"
+]

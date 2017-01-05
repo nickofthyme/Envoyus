@@ -1,0 +1,19 @@
+{
+  "name": "envoyus-gateway-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=7.1.0"
+  },
+  "scripts": {
+    "start": "node --harmony src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.6.2",
+    "express": "^4.14.0"
+  }
+}

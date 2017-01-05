@@ -10,7 +10,7 @@
 
 ## Use a feature branch in your forked repo for development
 
-* Create a feature branch in your forked repo before writing any code: 'git checkout -b BLeNd-HR51/Envoyus#{waffleNumber}'
+* Create a feature branch in your forked repo before writing any code: 'git checkout -b {featureName}#{waffleNumber}'
 * Make changes and regular commits
 
 ***** squishing is optional
@@ -26,4 +26,4 @@
 * Update your feature branch with the changes from the master: 'git rebase master'
 * Push your feature branch to your fork: 'git push origin {featureBranch}'
 * Submit a pull request to the team repo dev branch
-* In the body of that PR, add 'closes uberforcats/2016-09-thesis#{waffleNumber}'
+* In the body of that PR, add 'closes {featureName}#{waffleNumber}'

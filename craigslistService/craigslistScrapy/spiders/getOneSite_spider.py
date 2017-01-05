@@ -1,22 +1,11 @@
 import scrapy
 
 class CraigsListSpider(scrapy.Spider):
-    name = 'cityoncraigslist'
+    name = 'getonesite'
 
-    start_urls = ['http://sfbay.craigslist.org/search/sss?query=macbook']
+    start_urls = ['http://sfbay.craigslist.org/sfc/sys/5945468479.html']
 
     def parse(self, response):
-        for href in response.css('.result-row a::attr(href)').extract():
-            yield scrapy.Request(response.urljoin(href), callback=self.parse_list)
-
-        next_page = response.css('a.button.next::attr(href)').extract_first()
-
-        if next_page is not None:
-            next_page = response.urljoin(next_page);
-            yield scrapy.Request(next_page, callback=self.parse)
-
-
-    def parse_list(self, response):
         def extract_with_css(query):
             return response.css(query).extract_first()
 

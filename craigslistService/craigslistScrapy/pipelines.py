@@ -7,8 +7,10 @@ import requests
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 elasticEndpoint = 'http://louispvb.com:9200/cl/listing'
+# elasticEndpoint = 'http://localhost:9200/test/listing'
+
 class CraigslistsPipeline(object):
     def process_item(self, item, spider):
         r = requests.post(elasticEndpoint, json=item);
-        print('+++++RESPONSE+++++' + r.text)
+        # print('+++++RESPONSE+++++' + r.text)
         return item

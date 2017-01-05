@@ -6,4 +6,6 @@ bundle.js
 bundle.js.map
 __pycache__
 
+__pycache__
+
 config/config.privatekeys.js

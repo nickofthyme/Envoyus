@@ -1,28 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SearchBar from './SearchBar.jsx';
-import testData from './testData.js';
-import ResultList from './ResultList.jsx'
+import testData from '../testData.js';
+import SearchBar from './components/SearchBar.jsx';
+import ResultList from './components/ResultList.jsx';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      searchTerm: '',
-      resultList: []
-      location: {
-        longitude: ''
-        latitude: ''
-      }
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchTerm: '',
+            resultList: [],
+            location: {
+                longitude: '',
+                latitude: ''
+            }
+        };
     }
-  }
-  handleSearch(searchTerm) {
-    console.log(searchTerm);
-    var listings = testData.map(listing=>listing._source)
-    this.setState({
-      resultList: listings
-    })
-  }
+    handleSearch(searchTerm) {
+        // console.log(searchTerm);
+        var listings = testData.map(listing=>listing._source);
+        this.setState({
+            resultList: listings
+        });
+    }
   /*
   getMyLocation() {
     var output = document.getElementById("out");
@@ -53,23 +53,25 @@ class App extends React.Component {
     navigator.geolocation.getCurrentPosition(success, error);
   }
 */
-  render() {
-    return (
-      <div>
-        <div className='container'>
-          <div className='col-md-12'>
-            <h1 className='text-center'>Envoyus</h1>
+    render() {
+        return (
+        <div>
+          <div className='container'>
+            <div className='col-md-12'>
+              <h1 className='text-center'>Envoyus</h1>
+            </div>
+          </div>
+          <div className='container'>
+            <div className='text-center'>
+              <SearchBar handleSearch={this.handleSearch.bind(this)}/>
+            </div>
+            <div>
+              <ResultList listings={this.state.resultList}/>
+            </div>
           </div>
         </div>
-        <div className='container'>
-          <div className='text-center'>
-            <SearchBar handleSearch={this.handleSearch.bind(this)}/>
-          </div>
-          <div>
-            <ResultList listings={this.state.resultList}/>
-          </div>
         );
     }
-}
+  }
 
 export default App;

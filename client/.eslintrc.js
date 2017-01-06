@@ -6,7 +6,8 @@ module.exports = {
     },
     'extends': [
         'eslint:recommended',
-        'plugin:import/errors'
+        'plugin:import/errors',
+        'airbnb-base'
     ],
     'parserOptions': {
         'sourceType': 'module',
@@ -34,13 +35,15 @@ module.exports = {
     'rules': {
         'import/first': 2,
         'import/newline-after-import': 2,
-        'import/newline-after-import': 2,
         'import/no-duplicates': 2,
-        'import/no-unresolved': 0,
+        'import/no-unresolved': 1,
         'import/order': 2,
         'indent': ['error', 4],
-        'no-console': process.env.NODE_ENV === 'production' ? ['error', { allow: ['warn', 'error'] }] : 0,
-        'semi': ['error', 'always'],
-        'space-before-function-paren': 0
+        'no-console': process.env.NODE_ENV === 'production' ? ['error', { allow: ['warn', 'error'] }]: 1,
+        'semi': ['warn', 'always'],
+        'space-before-function-paren': 1,
+        'no-var': 1,
+        'no-unused-vars': 1
+
     }
 };

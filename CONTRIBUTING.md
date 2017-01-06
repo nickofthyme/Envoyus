@@ -7,10 +7,8 @@
 
 ### 2. Fork the organization repo
 
-```
-Fork the [BLeNd-HR51](https://github.com/BLeNd-HR51/Envoyus.git "BLeNd Repo") organization repo to your github account
-  ###### **_Keep your forked repo master in sync with the team repo_**
-```
+  Fork the [BLeNd-HR51](https://github.com/BLeNd-HR51/Envoyus.git "BLeNd Repo") organization repo to your github account
+    ###### **_Keep your forked repo master in sync with the team repo_**
 
 ### 3. Clone your forked repo to your local machine
 
@@ -45,6 +43,7 @@ git checkout -b <FEATURE_NAME>
 ```
 
   Your branch 'FEATURE_NAME' should follow this naming convention:
+
     - bug/<YOUR_FEATURE_DESCRIPTION>
     - feat/<YOUR_FEATURE_DESCRIPTION>
     - test/<YOUR_FEATURE_DESCRIPTION>
@@ -54,6 +53,7 @@ git checkout -b <FEATURE_NAME>
 ### 8. Make changes and regularly commit your feature branch.
 
   Prefix each commit like so
+
     - (feat) <COMMIT_DESCRIPTION>
       + `(feat) Added new feature`
     - (fix) <COMMIT_DESCRIPTION>
@@ -67,7 +67,9 @@ git checkout -b <FEATURE_NAME>
     - (doc) <COMMIT_DESCRIPTION>
       + `(doc) Revised contributing document`
 
-     ###### **_Make changes and commits on your branch, and make sure that you only make changes that are relevant to this branch. If you find yourself making unrelated changes, make a new branch for those changes._**
+
+      ###### **_Make changes and commits on your branch, and make sure that you only make changes that are relevant to this branch. If you find yourself making unrelated changes, make a new branch for those changes._**
+
 
   > #### Commit Message Guidelines
 
@@ -75,11 +77,11 @@ git checkout -b <FEATURE_NAME>
   > - The first line of your commit message should be a brief summary of what the commit changes. Aim for about 70 characters max. Remember: This is a summary, not a detailed description of everything that changed.
   > - If you want to explain the commit in more depth, following the first line should be a blank line and then a more detailed description of the commit. This can be is detailed as you want, so dig into details here and keep the first line short.
 
-### 9. Squish your changes into a single commit [optional]
+### 9. Squash your changes into a single commit [**optional**]
 
 ```bash
 # This will bring you into an interactive 'squash' mode
-git rebase -i HEAD~<COMMITS_SINCE_BRANCH CREATION>
+git rebase -i HEAD~<COMMITS_SINCE_BRANCH_CREATION>
 ```
 
   > - Leave the first commit as 'pick' or change it to 'rename' to edit the commit message
@@ -123,7 +125,7 @@ git rebase master
 git add <FILE_NAME>
 ```
 
-> NOTE: you do not make commits during a rebase.
+###### NOTE: you do not make commits during a rebase.
 
 > Once you are done fixing conflicts for a specific commit, run:
 
@@ -165,8 +167,10 @@ git push origin <FEATURE_NAME>
       - Keep your code [DRY](http://javascript.crockford.com/code.html).
       - Follow [STYLE-GUIDE.md](STYLE-GUIDE.md)
   1. Run the [tests](./client/test) before submitting a pull request.
+
     ```bash
     node run test
     ```
-    1. Tests are very, very important. Submit tests if your pull request contains new, testable behavior.
-  1. Your pull request should be comprised of a single [squashed](# 8. Squish your changes into a single commit [optional]) commit.
+
+    Tests are very, very important. Submit tests if your pull request contains new, testable behavior.
+  1. Your pull request should be comprised of a single [squashed](# 8. Squish your changes into a single commit [optional]) commit whenever practicable.

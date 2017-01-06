@@ -11,7 +11,7 @@ var RelevantSpec = (props) => (
       screen size: ??
     </div>
     <div>
-      Condition
+      Condition: ??
     </div>
   </div>
 );

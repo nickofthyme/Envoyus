@@ -4,7 +4,7 @@ import SearchBar from './SearchBar.jsx';
 import testData from './testData.js';
 import ResultList from './ResultList.jsx'
 
-class App extends React.Component { 
+class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -68,10 +68,8 @@ class App extends React.Component {
           <div>
             <ResultList listings={this.state.resultList}/>
           </div>
-        </div>
-      </div>
-    )
-  }
+        );
+    }
 }
 
 export default App;

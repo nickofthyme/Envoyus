@@ -1,3 +1,3 @@
 dist
-test/coverage
-test/result
+specs/coverage
+specs/result

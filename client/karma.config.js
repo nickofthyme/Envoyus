@@ -71,7 +71,7 @@ module.exports = function (config) {
         frameworks: ['mocha', 'sinon-chai'],
         reporters: ['dots', 'mocha', 'html', 'coverage'],
         htmlReporter: {
-            outputDir: './test/',
+            outputDir: './specs/',
             templatePath: null,
             focusOnFailure: true,
             namedFiles: false,
@@ -86,17 +86,17 @@ module.exports = function (config) {
             showDiff: true
         },
         coverageReporter: {
-            dir: './test/',
+            dir: './specs/',
             reporters: [
                 { type: 'html', subdir: './coverage' }
             ]
         },
         files: [
             'node_modules/babel-polyfill/dist/polyfill.js',
-            'test/index.js'
+            'specs/index.js'
         ],
         preprocessors: {
-            'test/index.js': ['webpack']
+            'specs/index.js': ['webpack']
         },
         webpack: webpackConfig,
 

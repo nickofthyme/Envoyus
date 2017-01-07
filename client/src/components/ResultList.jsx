@@ -2,6 +2,7 @@ import React from 'react';
 // import axios from 'axios';
 import moment from 'moment';
 // import ProgressBar from './progressbar.jsx';
+
 var RelevantSpec = (props) => (
   <div>
     <div>
@@ -19,14 +20,14 @@ var RelevantSpec = (props) => (
 
 
 class List extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  goToLink() {
-    window.location.href = "http://www.yahoo.com"
-  }
-  render () {
-    return (
+    constructor(props) {
+        super(props);
+    }
+    goToLink() {
+        window.location.href = "http://www.yahoo.com";
+    }
+    render () {
+        return (
       <div className='col-md-6'>
         <div className='lead' onClick={this.goToLink}>
           {this.props.listing.title}
@@ -50,15 +51,15 @@ class List extends React.Component {
         <br></br>
         <br></br>
       </div>
-    )
-  }
+        );
+    }
 }
 
 var ResultList = (props) => (
   <div>
     <div>
-      {props.listings.map((listing, index) => 
-        <List listing={listing} key={index}/> 
+      {props.listings.map((listing, index) =>
+        <List listing={listing} key={index}/>
       )}
     </div>
   </div>

@@ -4,26 +4,26 @@ import React from 'react';
 // import ProgressBar from './progressbar.jsx';
 
 class SearchBar extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      searchTerm: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchTerm: ''
+        };
     }
-  }
-  handleChange(event) {
-    this.setState({
-      searchTerm: event.target.value
-    });
-  }
-  handleClick() {
-    this.props.handleSearch(this.state.searchTerm);
-    this.setState({
-      searchTerm: ''
-    })
-  }
+    handleChange(event) {
+        this.setState({
+            searchTerm: event.target.value
+        });
+    }
+    handleClick() {
+        this.props.handleSearch(this.state.searchTerm);
+        this.setState({
+            searchTerm: ''
+        });
+    }
 
-  render () {
-    return (
+    render () {
+        return (
       <div>
         <input
           type="text"
@@ -38,8 +38,8 @@ class SearchBar extends React.Component {
           </button>
         </span>
       </div>
-    )
-  }
+        );
+    }
 }
 
 export default SearchBar;

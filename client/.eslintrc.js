@@ -38,7 +38,6 @@ module.exports = {
         'import/no-duplicates': 2,
         'import/no-unresolved': 1,
         'import/order': 2,
-        'indent': ['error', 4],
         'no-console': process.env.NODE_ENV === 'production' ? ['error', { allow: ['warn', 'error'] }]: 1,
         'semi': ['warn', 'always'],
         'space-before-function-paren': 1,

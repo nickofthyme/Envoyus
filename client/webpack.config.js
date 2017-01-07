@@ -1,35 +1,143 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CompressionWebpackPlugin = require('compression-webpack-plugin');
+var merge = require('webpack-merge');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-  entry: ['babel-polyfill', './components/src/index.jsx'],
-  output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+var APP_DIR = '.';
+
+var baseWebpackConfig = {
+  entry: {
+    client: [ APP_DIR + '/index.js' ]
   },
-  module: {
-    loaders: [
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
-      },
-      {
-        loader: 'babel-loader',
-        test: /\.js(|x)$/,
-        exclude: /(node_modules|bower_components)/,
-        query: {
-          presets: ['es2015', 'react'],
-        },
-      }
-    ]
-  },
-  plugins: [
-      new webpack.NoErrorsPlugin(),
-  ],
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css'],
+    extensions: ['', '.js', '.jsx'],
+    moduleDirectories: ['node_modules']
   },
-  // Create Sourcemaps for the bundle
-  devtool: 'source-map'
+
+  resolveLoader: {
+    root: path.join(__dirname, ' node_modules'),
+    fallback: [path.join(__dirname, '../node_modules')]
+  },
+
+  output: {
+    path: path.resolve(__dirname, APP_DIR + '/dist'),
+    publicPath: '/',
+    filename: '[name].js'
+  },
+
+  module: {
+    preloader: [{
+      test: /\.(jsx|js)$/,
+      loader: 'eslint',
+      exclude: /node_modules/
+    }],
+
+    loaders: [{
+      test: /\.(jsx|js)$/,
+      loader: 'babel',
+      exclude: /node_modules/
+    }, {
+      test: /\.scss$/,
+      loader: ExtractTextPlugin.extract('css!sass')
+    }]
+  },
+
+  sassLoader: {
+    includePaths: ['src/assets/styles']
+  },
+
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+
+    new webpack.ProvidePlugin({
+          $: "jquery",
+          jQuery: "jquery"
+      }),
+
+    new ExtractTextPlugin('[name].css', {
+      allChunks: true
+    }),
+
+    new HtmlWebpackPlugin({
+        filename: path.resolve( __dirname, APP_DIR + '/dist/index.html'),
+        template: path.resolve(__dirname, APP_DIR + '/index.html'),
+        inject: true,
+        minify: {
+            removeComments: true,
+            collapseWhitespace: true,
+            removeAttributeQuotes: true
+        },
+        chunksSortMode: 'dependency'
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: function (module, count) {
+            return (
+                module.resource &&
+                /\.js$/.test(module.resource) &&
+                module.resource.indexOf(
+                    path.join(__dirname, './node_modules')
+                ) === 0
+            )
+        }
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'manifest',
+        chunks: ['vendor']
+    })
+  ]
+}
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = merge(baseWebpackConfig, {
+    output: {
+        filename: '[name].[chunkhash].js',
+        chunkFilename: '[id].[chunkhash].js'
+    },
+
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': { NODE_ENV: '"production"' }
+        }),
+
+        new webpack.NoErrorsPlugin(),
+
+        new ExtractTextPlugin('[name].[contenthash].css'),
+
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+
+        new CompressionWebpackPlugin({
+            asset: '[path].gz[query]',
+            algorithm: 'gzip',
+            test: new RegExp(
+                '\\.(js|css)$'
+            ),
+            threshold: 10240,
+            minRatio: 0.8
+        })
+    ]
+  });
+} else {
+    module.exports = merge(baseWebpackConfig, {
+      devtool: '#eval-source-map',
+
+      plugins: [
+          new webpack.DefinePlugin({
+              'process.env': {NODE_ENV: '"development"'}
+          }),
+
+          new ExtractTextPlugin('[name].css'),
+
+          new webpack.HotModuleReplacementPlugin()
+      ]
+  });
 }

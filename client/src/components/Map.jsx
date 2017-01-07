@@ -1,10 +1,8 @@
-import Helmet from "react-helmet";
-import _ from "lodash";
+import Helmet from 'react-helmet';
+import _ from 'lodash';
 import React from 'react';
 import moment from 'moment';
-import {GoogleMapLoader, GoogleMap, Marker, withGoogleMap} from "react-google-maps";
-
-
+import { GoogleMapLoader, GoogleMap, Marker, withGoogleMap } from 'react-google-maps';
 
 
 const ShowMap = withGoogleMap(props => (
@@ -13,7 +11,7 @@ const ShowMap = withGoogleMap(props => (
     defaultZoom={3}
     defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
   >
-    {props.markers.map((marker,index) => (
+    {props.markers.map((marker, index) => (
       <Marker key={index}
         {...marker}
       />
@@ -22,52 +20,52 @@ const ShowMap = withGoogleMap(props => (
 ));
 
 class Map extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  handleMapLoad(map) {
-    this._mapComponent = map;
-    if (map) {
-      console.log(map.getZoom());
+    constructor(props) {
+        super(props);
     }
-  }
 
-  getMarkers() {
-    var coordinates = this.props.listings.map(function (listing) {
-      var marker = {
-        position: {
-          lat: Number(listing.lat),
-          lng: Number(listing.long)
-        },
-        defaultAnimation: 2
-      }
-      return marker;
-    })
-    return coordinates;
-  }
+    handleMapLoad(map) {
+        this._mapComponent = map;
+        if (map) {
+            console.log(map.getZoom());
+        }
+    }
 
-  render() {
-    var markers = this.getMarkers();
-    console.log(markers)
-    return (
-      <div style={{height: `100%`}}>
+    getMarkers() {
+        const coordinates = this.props.listings.map((listing) => {
+            const marker = {
+                position: {
+                    lat: Number(listing.lat),
+                    lng: Number(listing.long),
+                },
+                defaultAnimation: 2,
+            };
+            return marker;
+        });
+        return coordinates;
+    }
+
+    render() {
+        const markers = this.getMarkers();
+        console.log(markers);
+        return (
+      <div style={{ height: '100%' }}>
         <Helmet
           title="Getting Started"
         />
         <ShowMap
           containerElement={
-            <div style={{width: 500, height: 500}} />
+            <div style={{ width: 500, height: 500 }} />
           }
           mapElement={
-            <div style={{ height: `100%` }} />
+            <div style={{ height: '100%' }} />
           }
           onMapLoad={this.handleMapLoad.bind(this)}
           markers={markers}
         />
       </div>
-    );
-  }
+        );
+    }
 }
 
 export default Map;

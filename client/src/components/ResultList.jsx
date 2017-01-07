@@ -2,7 +2,7 @@ import React from 'react';
 // import axios from 'axios';
 import moment from 'moment';
 
-var RelevantSpec = (props) => (
+const RelevantSpec = props => (
   <div>
     <div>
       cpu: ??
@@ -17,15 +17,14 @@ var RelevantSpec = (props) => (
 );
 
 
-
 class List extends React.Component {
     constructor(props) {
         super(props);
     }
     goToLink() {
-        window.location.href = "http://www.yahoo.com";
+        window.location.href = 'http://www.yahoo.com';
     }
-    render () {
+    render() {
         return (
       <div className='col-md-6'>
         <div className='lead' onClick={this.goToLink}>
@@ -54,11 +53,11 @@ class List extends React.Component {
     }
 }
 
-var ResultList = (props) => (
+const ResultList = props => (
   <div>
     <div>
       {props.listings.map((listing, index) =>
-        <List listing={listing} key={index}/>
+        <List listing={listing} key={index}/>,
       )}
     </div>
   </div>

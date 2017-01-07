@@ -80,7 +80,7 @@ class App extends React.Component {
             {this.state.loading}
           </div>
           <div>
-            <Map listings={this.state.resultList}/>
+            <Map listings={this.state.resultList} currentLocation={this.state.location} />
           </div>
           <div>
             <ResultList listings={this.state.resultList}/>

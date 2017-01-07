@@ -20,35 +20,35 @@ const ShowMap = withGoogleMap(props => (
 ));
 
 class Map extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    handleMapLoad(map) {
-        this._mapComponent = map;
-        if (map) {
-            console.log(map.getZoom());
-        }
+  handleMapLoad(map) {
+    this._mapComponent = map;
+    if (map) {
+      console.log(map.getZoom());
     }
+  }
 
-    getMarkers() {
-        const coordinates = this.props.listings.map((listing) => {
-            const marker = {
-                position: {
-                    lat: Number(listing.lat),
-                    lng: Number(listing.long),
-                },
-                defaultAnimation: 2,
-            };
-            return marker;
-        });
-        return coordinates;
-    }
+  getMarkers() {
+    const coordinates = this.props.listings.map((listing) => {
+      const marker = {
+        position: {
+          lat: Number(listing.lat),
+          lng: Number(listing.long),
+        },
+        defaultAnimation: 2,
+      };
+      return marker;
+    });
+    return coordinates;
+  }
 
-    render() {
-        const markers = this.getMarkers();
-        console.log(markers);
-        return (
+  render() {
+    const markers = this.getMarkers();
+    console.log(markers);
+    return (
       <div style={{ height: '100%' }}>
         <Helmet
           title="Getting Started"
@@ -64,8 +64,8 @@ class Map extends React.Component {
           markers={markers}
         />
       </div>
-        );
-    }
+    );
+  }
 }
 
 export default Map;

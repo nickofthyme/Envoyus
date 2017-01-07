@@ -8,8 +8,8 @@
     "build": "rm -rf dist && mkdir dist && cross-env NODE_ENV=production webpack --progress --hide-modules",
     "test": "karma start karma.config.js --no-single-run",
     "lint": "npm run lint:js && npm run lint:scss",
-    "lint:js": "node_modules/eslint/bin/eslint.js --ext js,jsx, src test && echo 'No JavaScript lint errors'",
-    "lint:js:fix": "node_modules/eslint/bin/eslint.js --ext js,jsx, src test --fix",
+    "lint:js": "node_modules/eslint/bin/eslint.js --ext js,jsx . && echo 'No JavaScript lint errors'",
+    "lint:js:fix": "node_modules/eslint/bin/eslint.js --ext js,jsx . --fix",
     "lint:scss": "node_modules/sass-lint/bin/sass-lint.js --verbose && echo 'No SCSS lint errors'",
     "lint:scss:watch": "node_modules/nodemon/bin/nodemon.js --exec 'npm run lint:scss'"
   },
@@ -28,6 +28,7 @@
     "react-addons-css-transition-group": "^15.4.1",
     "react-addons-transition-group": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-google-maps": "^6.0.1",
     "react-helmet": "^3.3.0",
     "reactstrap": "^3.9.5"
   },

@@ -6,5 +6,5 @@ import './src/assets/styles/main.scss';
 
 ReactDOM.render(
   <App />,
-  document.getElementById('app')
+  document.getElementById('app'),
 );

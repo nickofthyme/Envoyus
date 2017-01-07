@@ -2,68 +2,85 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SearchBar from './SearchBar.jsx';
 import testData from './testData.js';
-import ResultList from './ResultList.jsx'
+import ResultList from './ResultList.jsx';
+import Map from './Map.jsx'
 
 class App extends React.Component { 
   constructor(props) {
     super(props)
     this.state = {
       searchTerm: '',
-      resultList: []
+      resultList: [],
+      loading: '',
       location: {
-        longitude: ''
-        latitude: ''
+        longitude: '',
+        latitude: '',
+        locationGiven: true,
+        zipcode: ''
       }
     }
   }
+  componentDidMount() {
+    this.getMyLocation();
+  }
   handleSearch(searchTerm) {
     console.log(searchTerm);
+    console.log(this.state.location);
     var listings = testData.map(listing=>listing._source)
     this.setState({
       resultList: listings
     })
+    console.log(this.state.resultList)
   }
-  /*
+  
   getMyLocation() {
-    var output = document.getElementById("out");
-
+    var self = this
     if (!navigator.geolocation){
-      output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+      console.log('please enter ')
       return;
     }
-
     function success(position) {
       var latitude  = position.coords.latitude;
       var longitude = position.coords.longitude;
-
-      output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-
-      var img = new Image();
-      img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-
-      output.appendChild(img);
+      self.setState({
+        loading: '',
+        location: {
+          longitude: longitude,
+          latitude: latitude,
+          locationGiven: true
+        }
+      })
+      console.log(latitude, longitude)
     }
-
     function error() {
-      output.innerHTML = "Unable to retrieve your location";
+      self.setState({
+        loading: '',
+        location: {
+          longitude: '',
+          latitude: '',
+          locationGiven: false
+        }
+      })
+      console.log('asking user for input')
     }
-
-    output.innerHTML = "<p>Locating…</p>";
-
+    this.setState({loading: 'getting your location'})
     navigator.geolocation.getCurrentPosition(success, error);
   }
-*/
   render() {
     return (
       <div>
-        <div className='container'>
-          <div className='col-md-12'>
-            <h1 className='text-center'>Envoyus</h1>
-          </div>
+        <div className='container col-md-12'>
+          <h1 className='text-center'>Envoyus</h1>
         </div>
         <div className='container'>
           <div className='text-center'>
             <SearchBar handleSearch={this.handleSearch.bind(this)}/>
+          </div>
+          <div>
+            {this.state.loading}
+          </div>
+          <div>
+            <Map listings={this.state.resultList}/>
           </div>
           <div>
             <ResultList listings={this.state.resultList}/>

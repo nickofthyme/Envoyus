@@ -1,7 +1,6 @@
 import React from 'react';
 // import axios from 'axios';
 import moment from 'moment';
-// import ProgressBar from './progressbar.jsx';
 var RelevantSpec = (props) => (
   <div>
     <div>

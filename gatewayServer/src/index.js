@@ -13,7 +13,7 @@ const app = express();
 app.use(compression());
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 
-var root = {hello: () => 'Hello moto'};
+let root = {hello: () => 'Hello moto'};
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,

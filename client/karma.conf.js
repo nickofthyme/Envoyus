@@ -8,58 +8,50 @@ const webpackConfig = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     modulesDirectories: [
-      'node_modules',
-    ],
+      'node_modules'
+    ]
   },
 
   resolveLoader: {
-    root: path.join(__dirname, 'node_modules'),
+    root: path.join(__dirname, 'node_modules')
   },
 
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.(jsx|js)$/,
         loader: 'babel',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(png|jpe?g)(\?.*)?$/,
-        loader: 'url',
-        query: {
-          limit: 10000,
-          name: path.resolve(__dirname, '/dist/img/[name].[hash:7].[ext]'),
-        },
-      },
-    ],
+        exclude: /node_modules/
+      }
+    ]
   },
 
   devtool: '#eval-source-map',
 
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: '"test"' },
+      'process.env': { NODE_ENV: '"test"' }
     }),
 
-    new webpack.optimize.OccurenceOrderPlugin(),
-  ],
+    new webpack.optimize.OccurenceOrderPlugin()
+  ]
 };
 
 webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
 webpackConfig.module.preLoaders.unshift({
   test: /\.js$/,
   loader: 'isparta',
-  include: path.resolve('src'),
+  include: path.resolve('src')
 });
 
 module.exports = function (config) {
   config.set({
     logLevel: config.LOG_INFO,
-    browsers: ['Chrome'],
+    browsers: ['Chrome'], //, 'Firefox', 'Safari'],
     client: {
       mocha: {
-        reporter: 'html',
-      },
+        reporter: 'html'
+      }
     },
     frameworks: ['mocha', 'sinon-chai'],
     reporters: ['dots', 'mocha', 'html', 'coverage'],
@@ -70,33 +62,33 @@ module.exports = function (config) {
       namedFiles: false,
       pageTitle: null,
       urlFriendlyName: false,
-      reportName: 'result',
+      reportName: 'testResults',
       preserveDescribeNesting: true,
-      foldAll: true,
+      foldAll: true
     },
     mochaReporter: {
       output: 'autowatch',
-      showDiff: true,
+      showDiff: true
     },
     coverageReporter: {
       dir: './test/',
       reporters: [
-          { type: 'html', subdir: './coverage' },
-      ],
+        { type: 'html', subdir: './coverage' }
+      ]
     },
     files: [
       'node_modules/babel-polyfill/dist/polyfill.js',
-      'test/index.js',
+      'test/components/**.spec.js'
     ],
     preprocessors: {
-      'test/index.js': ['webpack'],
+      'test/components/**.spec.js': ['webpack']
     },
     webpack: webpackConfig,
 
     webpackMiddleware: {
-      noInfo: true,
+      noInfo: true
     },
 
-    singleRun: true,
+    singleRun: true
   });
 };

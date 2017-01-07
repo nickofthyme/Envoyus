@@ -4,6 +4,7 @@ import testData from '../testData.js';
 import SearchBar from './components/SearchBar.jsx';
 import ResultList from './components/ResultList.jsx';
 import Map from './components/Map.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,11 +27,30 @@ class App extends React.Component {
   handleSearch(searchTerm) {
     console.log(searchTerm);
     console.log(this.state.location);
-    const listings = testData.map(listing => listing._source);
-    this.setState({
-      resultList: listings,
-    });
-    console.log(this.state.resultList);
+    axios.post('http://localhost:3000/graphql',
+      `{
+        listings(query:"${searchTerm}", size: 10) {
+          results {
+            title
+            price
+            lat
+            long
+            description
+            postingUrl
+            updateDate
+          }
+        }
+      }`,
+      { headers: { 'Content-Type': 'application/graphql' } 
+    })
+    .then(response=> {
+      console.log(response);
+      let listings = response.data.data.listings.results;
+      console.log( listings, ' this is listings');
+      this.setState({
+        resultList: listings
+      });      
+    })
   }
 
   getMyLocation() {

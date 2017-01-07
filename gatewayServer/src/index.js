@@ -16,8 +16,8 @@ app.use(express.static(path.join(__dirname, '../../client/public')));
 var root = {hello: () => 'Hello moto'};
 
 app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root,
+  schema,
+  // rootValue: root,
   graphiql: true
 }));
 

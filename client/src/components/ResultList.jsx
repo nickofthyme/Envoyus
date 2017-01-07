@@ -22,7 +22,7 @@ class List extends React.Component {
     super(props);
   }
   goToLink() {
-    window.location.href = 'http://www.yahoo.com';
+    window.location.href = this.props.postingUrl;
   }
   render() {
     return (

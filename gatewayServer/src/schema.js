@@ -54,6 +54,7 @@ const ListingType = new GraphQLObjectType({
     postId: { type: GraphQLString },
     postingUrl: { type: GraphQLString },
     postDate: { type: GraphQLString },
+    updateDate: {type: GraphQLString },
     attributes: { type: new GraphQLList(GraphQLString) },
     sellerUrl: { type: GraphQLString },
     sellerName: { type: GraphQLString },

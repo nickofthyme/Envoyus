@@ -34,13 +34,6 @@ var webpackConfig = {
         ]
     },
 
-    vue: {
-        loaders: {
-            scss: 'style!css!sass',
-            js: 'isparta'
-        }
-    },
-
     devtool: '#eval-source-map',
 
     plugins: [
@@ -71,7 +64,7 @@ module.exports = function (config) {
         frameworks: ['mocha', 'sinon-chai'],
         reporters: ['dots', 'mocha', 'html', 'coverage'],
         htmlReporter: {
-            outputDir: './specs/',
+            outputDir: './test/',
             templatePath: null,
             focusOnFailure: true,
             namedFiles: false,
@@ -86,17 +79,17 @@ module.exports = function (config) {
             showDiff: true
         },
         coverageReporter: {
-            dir: './specs/',
+            dir: './test/',
             reporters: [
                 { type: 'html', subdir: './coverage' }
             ]
         },
         files: [
             'node_modules/babel-polyfill/dist/polyfill.js',
-            'specs/index.js'
+            'test/index.js'
         ],
         preprocessors: {
-            'specs/index.js': ['webpack']
+            'test/index.js': ['webpack']
         },
         webpack: webpackConfig,
 

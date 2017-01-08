@@ -22,12 +22,12 @@ class List extends React.Component {
     super(props);
   }
   goToLink() {
-    window.location.href = this.props.postingUrl;
+    window.location.href = this.props.listing.postingUrl;
   }
   render() {
     return (
       <div className='col-md-6'>
-        <div className='lead' onClick={this.goToLink}>
+        <div className='lead' onClick={this.goToLink.bind(this)}>
           {this.props.listing.title}
         </div>
         <div>

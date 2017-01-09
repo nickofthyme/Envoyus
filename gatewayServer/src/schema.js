@@ -72,7 +72,7 @@ const HitsMetaData = new GraphQLObjectType({
     maxScore: {type: GraphQLFloat },
     timedOut: {type: GraphQLBoolean }
   })
-})
+});
 
 const ListingsHitResult = new GraphQLObjectType({
   name: 'ListingsHitResult',
@@ -81,7 +81,7 @@ const ListingsHitResult = new GraphQLObjectType({
     metaData: {type: HitsMetaData},
     results: {type: new GraphQLList(ListingType)}
   })
-})
+});
 
 const Query = new GraphQLObjectType({
   name: 'Query',
@@ -108,9 +108,9 @@ const Query = new GraphQLObjectType({
         let request;
         try {
           let postReq = {
-            "query": {
-              "match": {
-                "description": args.query
+            'query': {
+              'match': {
+                'description': args.query
               }
             }
           };
@@ -122,7 +122,7 @@ const Query = new GraphQLObjectType({
           console.error(error);
         }
         results = request.data.hits.hits.map(listing => listing._source);
-        console.log(request.data)
+        console.log(request.data);
         let listingsHitResult = {
           metaData: {
             total: request.data.hits.total,
@@ -130,7 +130,7 @@ const Query = new GraphQLObjectType({
             timedOut: request.data.timed_out
           }, 
           results
-        }
+        };
         return listingsHitResult;
       }
     }

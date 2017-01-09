@@ -32,7 +32,7 @@ git fetch upstream
 ### 6. Set your master branch to track the upstream dev branch
 
 ```
-git branch -u upstream/dev'
+git branch -u upstream/dev
 ```
 
 ### 7. Cut a namespaced feature branch from master
@@ -74,6 +74,23 @@ _Make changes and commits on your branch, and make sure that you only make chang
 > - Commit messages should be written in the present tense (e.g. "Fix continuous integration script").
 > - The first line of your commit message should be a brief summary of what the commit changes. Aim for about 70 characters max. Remember: This is a summary, not a detailed description of everything that changed.
 > - If you want to explain the commit in more depth, following the first line should be a blank line and then a more detailed description of the commit. This can be is detailed as you want, so dig into details here and keep the first line short.
+
+### 9. Check to ensure all tests and linting pass
+
+```bash
+# Runs linter on all files in local root directory
+npm run lint
+```
+
+```bash
+# Fixs minor linting problems for all .js & .jsx files files in local root directory
+npm run lint:fix
+```
+
+```bash
+# Runs all tests in local root directory
+npm test
+```
 
 ### 9. Squash your changes into a single commit [**optional**]
 
@@ -134,7 +151,7 @@ git rebase --continue
 > This will continue the rebasing process. Once you are done fixing all conflicts you should run the existing tests to make sure you didn’t break anything, then run your new tests (there are new tests, right?) and make sure they work also.
 
 ```bash
-node run test
+npm test
 ```
 
 > If rebasing broke anything, fix it, then repeat the above process until you get here again and nothing is broken and all the tests pass.
@@ -167,7 +184,7 @@ Thanks for contributing, Happy Hacking!
 1. Run the [tests](./client/test) before submitting a pull request.
 
   ```bash
-  node run test
+  npm test
   ```
 
   Tests are very, very important. Submit tests if your pull request contains new, testable behavior.

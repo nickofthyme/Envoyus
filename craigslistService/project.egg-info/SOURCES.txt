@@ -1,0 +1,17 @@
+setup.py
+craigslistScrapy/__init__.py
+craigslistScrapy/items.py
+craigslistScrapy/middlewares.py
+craigslistScrapy/pipelines.py
+craigslistScrapy/settings.py
+craigslistScrapy/test.py
+craigslistScrapy/spiders/CLQueryWithArgsNoUserInfo.py
+craigslistScrapy/spiders/CLQueryWithArgsandUserInfo.py
+craigslistScrapy/spiders/__init__.py
+craigslistScrapy/spiders/getAreasAndSubareas.py
+craigslistScrapy/spiders/getCategories.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt

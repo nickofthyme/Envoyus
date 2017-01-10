@@ -30,6 +30,11 @@ const CLListingType = new GraphQLObjectType({
     attributes: { type: new GraphQLList(GraphQLString) },
     lat: { type: GraphQLString }, //*** may need to be string
     long: { type: GraphQLString },
+    postId: { type: GraphQLString },
+    postingUrl: { type: GraphQLString },
+    postDate: { type: GraphQLString },
+    updateDate: {type: GraphQLString },
+    attributes: { type: new GraphQLList(GraphQLString) },
     sellerUrl: { type: GraphQLString },
     sellerName: { type: GraphQLString },
     sellerPhoneNumber: { type: GraphQLString },
@@ -47,7 +52,7 @@ const HitsMetaData = new GraphQLObjectType({
     maxScore: {type: GraphQLFloat },
     timedOut: {type: GraphQLBoolean }
   })
-})
+});
 
 const CLListingsHitResult = new GraphQLObjectType({
   name: 'ListingsHitResult',
@@ -56,7 +61,7 @@ const CLListingsHitResult = new GraphQLObjectType({
     metaData: {type: HitsMetaData},
     results: {type: new GraphQLList(CLListingType)}
   })
-})
+});
 
 const Query = new GraphQLObjectType({
   name: 'Query',
@@ -83,9 +88,9 @@ const Query = new GraphQLObjectType({
         let request;
         try {
           let postReq = {
-            "query": {
-              "match": {
-                "description": args.query
+            'query': {
+              'match': {
+                'description': args.query
               }
             }
           };
@@ -97,6 +102,7 @@ const Query = new GraphQLObjectType({
           console.error('NonFatal: ' + error);
         }
         results = request.data.hits.hits.map(listing => listing._source);
+
         let listingsHitResult = {
           metaData: {
             total: request.data.hits.total,
@@ -104,7 +110,7 @@ const Query = new GraphQLObjectType({
             timedOut: request.data.timed_out
           },
           results
-        }
+        };
         return listingsHitResult;
       }
     },

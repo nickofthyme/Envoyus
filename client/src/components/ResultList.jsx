@@ -18,16 +18,16 @@ const RelevantSpec = props => (
 
 
 class List extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    goToLink() {
-        window.location.href = 'http://www.yahoo.com';
-    }
-    render() {
-        return (
+  constructor(props) {
+    super(props);
+  }
+  goToLink() {
+    window.location.href = this.props.listing.postingUrl;
+  }
+  render() {
+    return (
       <div className='col-md-6'>
-        <div className='lead' onClick={this.goToLink}>
+        <div className='lead' onClick={this.goToLink.bind(this)}>
           {this.props.listing.title}
         </div>
         <div>
@@ -49,8 +49,8 @@ class List extends React.Component {
         <br></br>
         <br></br>
       </div>
-        );
-    }
+    );
+  }
 }
 
 const ResultList = props => (

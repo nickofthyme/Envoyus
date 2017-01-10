@@ -7,10 +7,12 @@
     "node": ">=7.1.0"
   },
   "scripts": {
-    "start": "node --harmony src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --harmony src",
+    "test": "node --harmony src/index.js & mocha --bail --harmony test/gateway.spec.js; pkill -n node",
+    "lint": "node_modules/eslint/bin/eslint.js --ext js, . && echo 'No JavaScript lint errors'",
+    "lint:fix": "node_modules/eslint/bin/eslint.js --ext js, . --fix"
   },
-  "author": "",
+  "author": "BLeNd-HR51",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.15.3",
@@ -20,9 +22,22 @@
     "express": "^4.14.0",
     "express-graphql": "^0.6.1",
     "graphql": "^0.8.2",
-    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
-    "xml2js": "^0.4.17"
+    "xml2js": "^0.4.17",
+    "request": "^2.79.0",
+    "webpack": "^1.14.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.13.0",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-friendly-formatter": "^2.0.7",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-node": "^3.0.5",
+    "lodash": "^4.17.4",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0"
   }
 }

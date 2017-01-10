@@ -9,7 +9,7 @@ const schema = require('./schema.js');
 const app = express();
 
 app.use(compression());
-app.use(express.static(path.join(__dirname, '../../client/public')));
+app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 var root = {hello: () => 'Hello moto'};
 

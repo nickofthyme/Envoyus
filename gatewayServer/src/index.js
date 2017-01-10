@@ -6,8 +6,6 @@ const graphqlHTTP = require('express-graphql');
 const {buildSchema} = require('graphql');
 const schema = require('./schema.js');
 
-// TODO ADD GRAPHQL HERE
-
 const app = express();
 
 app.use(compression());
@@ -16,8 +14,8 @@ app.use(express.static(path.join(__dirname, '../../client/dist')));
 let root = {hello: () => 'Hello moto'};
 
 app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root,
+  schema,
+  // rootValue: root,
   graphiql: true
 }));
 

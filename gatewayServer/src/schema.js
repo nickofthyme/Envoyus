@@ -149,7 +149,7 @@ const Query = new GraphQLObjectType({
         // Return flattened URLS
         return flatten(datas.map(data =>
           data[0].Item.map(item =>
-            item.DetailPageURL[0])));
+            item.DetailPageURL[0].split('%3FSubscription')[0])));
       }
     }
   })

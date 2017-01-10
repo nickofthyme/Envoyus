@@ -6,8 +6,6 @@ const graphqlHTTP = require('express-graphql');
 const {buildSchema} = require('graphql');
 const schema = require('./schema.js');
 
-// TODO ADD GRAPHQL HERE
-
 const app = express();
 
 app.use(compression());

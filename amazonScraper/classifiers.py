@@ -53,21 +53,38 @@ def spec_features(s):
 def file_exists(path):
     return os.path.isfile(path)
 
+def get_training_data(product):
+    with open(product + '.json') as data_file:
+        return json.load(data_file)
+
+def get_spec_list(specs):
+    spec_list = {}
+    for spec in specs:
+        spec_list[spec[1]] = None
+    return spec_list
 
 # CLASSIFIERS
-def train_spec_classifier():
-    with open('mbp.json') as data_file:
-        mbpj = json.load(data_file)
-    with open('mbair.json') as data_file:
-        mbairj = json.load(data_file)
-    with open('delllaptop.json') as data_file:
-        dellj = json.load(data_file)
-    with open('tablets.json') as data_file:
-        tabletj = json.load(data_file)
+def train_spec_classifier(product = 'mbp'):
+    tr_data = get_training_data(product)
+    # with open('mbp.json') as data_file:
+    #     mbpj = json.load(data_file)
+    # with open('mbair.json') as data_file:
+    #     mbairj = json.load(data_file)
+    # with open('delllaptop.json') as data_file:
+    #     dellj = json.load(data_file)
+    # with open('tablets.json') as data_file:
+    #     tabletj = json.load(data_file)
     specs = []
-    for listing in (mbpj):
-        perSpec = ([(spec, key) for key, spec in listing.items()])
-        specs += perSpec
+    spec_list = {}
+    for listing in (tr_data):
+        for key, spec in listing.items():
+            perSpec = [(spec, key)]
+            specs += perSpec
+            print('per spec ==>', perSpec[0])
+            # get all specs
+            spec_list[perSpec[0][1]] = None
+
+    print('spec list' , spec_list)
 
     random.shuffle(specs)
 

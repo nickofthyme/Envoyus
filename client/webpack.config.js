@@ -74,16 +74,16 @@ const baseWebpackConfig = {
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: function (module, count) {
-            return (
+      name: 'vendor',
+      minChunks(module, count) {
+        return (
                 module.resource &&
                 /\.js$/.test(module.resource) &&
                 module.resource.indexOf(
-                    path.join(__dirname, './node_modules')
+                    path.join(__dirname, './node_modules'),
                 ) === 0
-            )
-        }
+        );
+      },
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
@@ -122,7 +122,7 @@ if (process.env.NODE_ENV === 'production') {
         threshold: 10240,
         minRatio: 0.8,
       }),
-    ]
+    ],
   });
 } else {
   module.exports = merge(baseWebpackConfig, {

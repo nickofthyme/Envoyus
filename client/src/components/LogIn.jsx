@@ -7,7 +7,7 @@
 //   }
 
 //   logIn(){
-    
+
 //     console.log('workkkkking');
 
 //      // axios.post({
@@ -33,7 +33,7 @@
 //       <div>
 //         <a onClick={ this.logIn.bind(this) } href="http://localhost:3001/auth/facebook" >
 //           Log In
-//         </a>          
+//         </a>
 //       </div>
 //     )
 

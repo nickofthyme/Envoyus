@@ -14,7 +14,7 @@
 
 //   componentDidMount(){
 //      console.log( typeof(Storage) );
-//      console.log( sessionStorage.user )   
+//      console.log( sessionStorage.user )
 //   }
 
 //   handleChange(event) {
@@ -45,7 +45,7 @@
 //            <div>
 //               <a onClick={this.logIn.bind(this)} href="http://localhost:3001/auth/facebook" >
 //                 Log Out
-//               </a> 
+//               </a>
 //             </div>
 //           <input
 //             type="text"
@@ -72,7 +72,7 @@
 //            <div>
 //               <a href="#" onClick={this.logIn.bind(this)}>
 //                 Log In
-//               </a> 
+//               </a>
 //             </div>
 //           <input
 //             type="text"
@@ -107,64 +107,55 @@ class SearchBar extends React.Component {
     this.state = {
       searchTerm: '',
       loggedIn: false,
-      token: localStorage.token
+      token: localStorage.token,
     };
   }
 
 
-
   componentDidMount() {
-    
-     console.log( 'workingggggg' );
+    console.log('workingggggg');
 
-    if( localStorage.token === undefined ) {
+    if (localStorage.token === undefined) {
+      const url = window.location.href;
+      const name = 'token'.replace(/[\[\]]/g, '\\$&');
+      let regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
+        results = regex.exec(url);
+    // var url = 'http://localhost:3000/'
+      if (results) {
+        console.log(results[2]);
+        window.localStorage.token = results[2];
+      }
 
-    var url = window.location.href;
-    var name = 'token'.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url)
-    //var url = 'http://localhost:3000/'
-    if (results) {
-      console.log(results[2]);
-      window.localStorage.token = results[2];
-    }
-
-    if( window.location.href !== 'http://localhost:3000/'){
-      window.location.href = 'http://localhost:3000/'
-    }
+      if (window.location.href !== 'http://localhost:3000/') {
+        window.location.href = 'http://localhost:3000/';
+      }
 
     // if( !localStorage ) {
     //   this.setState({ loggedIn: false })
     // }
+    }
 
-  }
+    setTimeout(() => {
+      console.log(localStorage.token);
 
-     setTimeout( () => { console.log(localStorage.token );
-
-      if( localStorage.token === '' ) {
-      localStorage.clear();
-      window.location.href = 'http://localhost:3000/'  
+      if (localStorage.token === '') {
+        localStorage.clear();
+        window.location.href = 'http://localhost:3000/';
       // this.setState({
       //   loggedIn: false
       // })
+      } else if (localStorage.token) {
+        this.setState({
+          loggedIn: true,
+        });
+      }
+    }, 200);
 
-    } else if ( localStorage.token ) {
-      this.setState({
-        loggedIn: true
-      })
-    }
-     }, 200)
 
-
-     
     // this.setState({
     //   token: localStorage.token
     // });
-
-
-
-
-
-}
+  }
 
   handleChange(event) {
     this.setState({
@@ -174,27 +165,26 @@ class SearchBar extends React.Component {
   handleClick() {
     this.props.handleSearch(this.state.searchTerm);
     this.setState({
-      searchTerm: ''
+      searchTerm: '',
     });
   }
 
-  logOutButton(){
-    console.log('outside if')
-    if ( this.state.loggedIn === true ) {
+  logOutButton() {
+    console.log('outside if');
+    if (this.state.loggedIn === true) {
       // localStorage.clear();
-      localStorage.token = ''
+      localStorage.token = '';
       // console.log('before')
       // window.location.href = '/'
       // console.log('after')
       this.setState({
-        loggedIn: false
-      })
-
+        loggedIn: false,
+      });
     }
   }
 
   pleaseLogIn() {
-    alert('please log in to continue')
+    alert('please log in to continue');
   }
 
 
@@ -208,16 +198,14 @@ class SearchBar extends React.Component {
   //   this.getMyLocation();
 
   render() {
-
     // if user is logged in
-    if ( this.state.loggedIn === false ){
-
+    if (this.state.loggedIn === false) {
       return (
         <div>
            <div>
               <a href="http://localhost:3001/auth/facebook" target="facebook_login" className="logStatus">
                 Log In
-              </a> 
+              </a>
             </div>
           <input
             // type="text"
@@ -235,15 +223,14 @@ class SearchBar extends React.Component {
       );
     }
 
-    //if user is logged in
-    if ( this.state.loggedIn ){
-
+    // if user is logged in
+    if (this.state.loggedIn) {
       return (
         <div>
            <div>
               <a onClick={this.logOutButton.bind(this)} href="#" className="logStatus" >
                 Log out
-              </a> 
+              </a>
             </div>
           <input
             type="text"
@@ -259,9 +246,7 @@ class SearchBar extends React.Component {
           </span>
         </div>
       );
-
     }
-    
   }
 }
 

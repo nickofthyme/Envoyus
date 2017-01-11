@@ -47,7 +47,7 @@ webpackConfig.module.preLoaders.unshift({
 module.exports = function (config) {
   config.set({
     logLevel: config.LOG_INFO,
-    browsers: ['Chrome'], //, 'Firefox', 'Safari'],
+    browsers: ['Chrome'], // , 'Firefox', 'Safari'],
     client: {
       mocha: {
         reporter: 'html'

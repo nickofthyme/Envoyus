@@ -21,8 +21,8 @@ class App extends React.Component {
         longitude: '',
         latitude: '',
         locationGiven: true,
-        zipcode: '',
-      },
+        zipcode: ''
+      }
     };
   }
   componentDidMount() {
@@ -43,7 +43,7 @@ class App extends React.Component {
     console.log(this.state.location);
     axios.post('http://localhost:3000/graphql',
       `{
-        listings(query:"${searchTerm}", size: 10) {
+        craigslist(query:"${searchTerm}", size: 10) {
           results {
             title
             price
@@ -55,14 +55,14 @@ class App extends React.Component {
           }
         }
       }`,
-      { headers: { 'Content-Type': 'application/graphql' },
+      { headers: { 'Content-Type': 'application/graphql' }
       })
     .then((response) => {
       console.log(response);
-      const listings = response.data.data.listings.results;
+      const listings = response.data.data.craigslist.results;
       console.log(listings, ' this is listings');
       this.setState({
-        resultList: listings,
+        resultList: listings
       });
     });
   }
@@ -81,8 +81,8 @@ class App extends React.Component {
         location: {
           longitude,
           latitude,
-          locationGiven: true,
-        },
+          locationGiven: true
+        }
       });
       console.log(latitude, longitude);
     }
@@ -92,8 +92,8 @@ class App extends React.Component {
         location: {
           longitude: '',
           latitude: '',
-          locationGiven: false,
-        },
+          locationGiven: false
+        }
       });
       console.log('asking user for input');
     }

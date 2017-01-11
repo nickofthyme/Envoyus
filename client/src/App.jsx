@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import testData from '../testData.js';
 import SearchBar from './components/SearchBar.jsx';
 import ResultList from './components/ResultList.jsx';
+// import LoggedInStatus from './components/LogIn.jsx';
 import Map from './components/Map.jsx';
 import axios from 'axios';
 
@@ -13,6 +14,9 @@ class App extends React.Component {
       searchTerm: '',
       resultList: [],
       loading: '',
+
+      logedInStatus: false,
+
       location: {
         longitude: '',
         latitude: '',
@@ -22,6 +26,15 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
+    // var url = window.location.href;
+    // var name = 'token'.replace(/[\[\]]/g, "\\$&");
+    // var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url)
+    // if (results) {
+    //   console.log(results[2]);
+    //   window.localStorage.token = results[2];
+    // }
+
+
     this.getMyLocation();
   }
   handleSearch(searchTerm) {
@@ -41,16 +54,16 @@ class App extends React.Component {
           }
         }
       }`,
-      { headers: { 'Content-Type': 'application/graphql' } 
-    })
-    .then(response=> {
+      { headers: { 'Content-Type': 'application/graphql' },
+      })
+    .then((response) => {
       console.log(response);
-      let listings = response.data.data.listings.results;
-      console.log( listings, ' this is listings');
+      const listings = response.data.data.listings.results;
+      console.log(listings, ' this is listings');
       this.setState({
-        resultList: listings
-      });      
-    })
+        resultList: listings,
+      });
+    });
   }
 
   getMyLocation() {

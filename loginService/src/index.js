@@ -14,6 +14,7 @@ const LOGIN_DB_URI = config.LOGIN_SERVICE.DB_URI;
 const APP_PORT = config.LOGIN_SERVICE.PORT;
 const KEYS = require('../../config/config.privatekeys.js');
 
+
 mongoose.connect(LOGIN_DB_URI);
 
 db.on('error', () => console.error('Login Service: error: connection to DB failed'));
@@ -84,11 +85,24 @@ auth.route('/facebook/callback')
         expires  : new Date(Date.now() + 1000 * 60 * 60 * 2),
         httpOnly : false
       });
-      res.redirect('/auth/success');
+      //res.send('<script>window.localStorage.token="userToken"; console.log("token working")</script>')
+      // res.redirect('/auth/success');
+      res.redirect( 'http://localhost:3000/?token='+req.user.token );
+      //res.redirect( 'http://localhost:3000/');
+
     }
   );
 
-auth.get('/fail', (req, res) => res.send('Login Fail'));
-auth.get('/success', (req, res) => res.send('Login Success'));
+auth.get('/fail', (req, res) => res.send('Login Fail') );
+// auth.get('/success', (req, res) => res.redirect('http://localhost:3000/')); // my line
+auth.get('/success', (req, res, next) => { 
+  //insert local storage here!!!!!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   console.log('Login Success');
+  next()
+  },
+  (req, res) => {
+  }
+);
+// auth.get('/success', (req, res) => res.send('Login Success')); // louis
 
-app.listen(APP_PORT, () => console.log('Login Service listening on *:' + APP_PORT));
+app.listen(APP_PORT, () => console.log( 'Login Service listening on *:' + APP_PORT ) );

@@ -1,7 +1,22 @@
-import React from 'react';
+import App from '../../src/App.jsx'
 
 describe('App', () => {
-    it('should pass the test', () => {
-        expect(true).to.be.true;
-    });
+  var {
+    Simulate,
+    renderIntoDocument,
+    findRenderedDOMComponentWithClass,
+    scryRenderedDOMComponentsWithClass
+  } = React.addons.TestUtils;
+
+  var app;
+
+  beforeEach(function() {
+    app = renderIntoDocument(
+      <App />
+    );
+  });
+
+  it('should be a stateful class component', function() {
+    expect(React.Component.isPrototypeOf(App)).to.be.true;
+  });
 });

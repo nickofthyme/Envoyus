@@ -6,8 +6,7 @@ module.exports = {
     },
     'extends': [
         'eslint:recommended',
-        'plugin:import/errors',
-        'airbnb-base'
+        'plugin:node/recommended',
     ],
     'parserOptions': {
         'sourceType': 'module',
@@ -16,8 +15,7 @@ module.exports = {
         }
     },
     'plugins': [
-        'react',
-        'import'
+        'node',
     ],
     'globals': {
         'deepEqual': true,
@@ -33,17 +31,13 @@ module.exports = {
         'require': true
     },
     'rules': {
-        'import/first': 2,
-        'import/newline-after-import': 2,
-        'import/no-duplicates': 2,
-        'import/no-unresolved': 1,
-        'import/order': 2,
         'no-console': process.env.NODE_ENV === 'production' ? ['error', { allow: ['warn', 'error'] }]: 1,
         'semi': ['warn', 'always'],
         'space-before-function-paren': 1,
         'no-var': 1,
         'no-unused-vars': 1,
         'quotes': [2, 'single'],
-        'comma-dangle': ['error', 'never']
+        'node/exports-style': ['error', 'module.exports'],
+        "comma-dangle": ["error", "never"]
     }
 };

@@ -1,21 +1,9 @@
-// AKIAIH7PXSJ6OJT4YNAA
 require('isomorphic-fetch');
 require('es6-promise').polyfill();
 const moment = require('moment');
 const crypto = require('crypto');
 const parseString = require('xml2js').parseString;
 const _ = require('lodash');
-
-// Had to register an IAM user with an accessKey, and secretKey, create a new policy
-// because there's no included policies to allow usage of Product API, make a group,
-// attach IAM user to that group
-// Generate an associateID because I can't make requests without amazon paying me
-// attach the url encoded search parameters, timestamp, accessKey, associateID to
-// my parameters, split the parameters and sort by first byte value of key,
-// rejoin, hash it using an 'RFC 2104-compliant HMAC with the SHA256 hash algorithm'
-// add the signature to the paramters and all the parameters to the request url
-// parse the XML string into a DOM parser,
-// parse the XML DOM elements to JSON
 
 // EXAMPLE USAGE
 // where config has keys {secretKey, accessKey, associateID}
@@ -91,7 +79,6 @@ class AmazonSearch {
       Operation: operation,
     });
     let url = this._createFullURLString(lookupOpts);
-    console.log(url);
     return this._fetchData(url);
   }
 
@@ -108,7 +95,7 @@ class AmazonSearch {
   }
 
   itemSearch(opts) {
-    if (!opts['SearchIndex']) 
+    if (!opts['SearchIndex'])
       throw 'SearchIndex key is required for item search. See http://docs.aws.amazon.com/AWSECommerceService/latest/DG/localevalues.html';
     return this._lookupOperation(opts, 'ItemSearch');
   }

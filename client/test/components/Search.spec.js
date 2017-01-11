@@ -1,27 +1,27 @@
-import Search from '../../src/components/SearchBar.jsx'
+import Search from '../../src/components/SearchBar.jsx';
 
 describe('Search', () => {
-    it('should pass the test', () => {
-        expect(true).to.be.true;
-    });
+  it('should pass the test', () => {
+    expect(true).to.be.true;
+  });
 });
 
 xdescribe('Search', () => {
-    it('should pass the test', () => {
-        expect(true).to.be.true;
-    });
+  it('should pass the test', () => {
+    expect(true).to.be.true;
+  });
 });
 
 xdescribe('Search', () => {
-    it('should pass the test', () => {
-        expect(true).to.be.true;
-    });
+  it('should pass the test', () => {
+    expect(true).to.be.true;
+  });
 });
 
 xdescribe('Search', () => {
-    it('should pass the test', () => {
-        expect(true).to.be.true;
-    });
+  it('should pass the test', () => {
+    expect(true).to.be.true;
+  });
 });
 
 

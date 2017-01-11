@@ -24,6 +24,7 @@ class App extends React.Component {
   componentDidMount() {
     this.getMyLocation();
   }
+
   handleSearch(searchTerm) {
     console.log(searchTerm);
     console.log(this.state.location);

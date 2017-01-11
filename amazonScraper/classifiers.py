@@ -78,7 +78,8 @@ def train_spec_classifier():
 
 
     nb_classifier = NaiveBayesClassifier.train(train_set)
-
+    # nb_classifier.classify(string)
+    # nb_classifier.prob_classify(string)
     print(classify.accuracy(nb_classifier, test_set))
     nb_classifier.show_most_informative_features(10)
 

@@ -1,3 +1,29 @@
+$margin: margin auto;
+$font1: 'Pacifico', cursive;
+
 body {
     opacity: .9;
 }
+
+a.logo{
+  color: #45B3FF;
+  font-family: $font1;
+  font-size: 28px;
+  padding-bottom: 15px;
+}
+
+.logStatus{
+  padding: 15px 0px;
+  font-size: 18px;
+}
+
+input{
+  height: 30px;
+  width: 250px;
+}
+
+Navbar{
+  border-radius: 0%
+}
+
+

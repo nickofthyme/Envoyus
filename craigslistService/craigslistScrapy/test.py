@@ -1,3 +1,6 @@
+import random
+
+
 # lat = 0
 # cityName = 'something'
 # lng = 0
@@ -23,17 +26,36 @@ str = 'mac book pro'
 that = 'that'
 this = 'this'
 
+test_str = 'condition'
+
+
 newstr = "you can get with %s or you could get with %s" % (this, that)
 # new = str.replace ("you can get with %s or you could get with %s")
+#
+# print(newstr)
+#
+# arr = [1,2,3]
+#
+arr = [{'name': None, 'test': 'why?'},{'name': 'second', 'test': 'idk?'}]
 
-print(newstr)
+print((arr[0].get('nick') if (arr[0].get('nick') in None) else ''))
 
-arr = [1,2,3]
+# for obj in arr:
+#     print(obj['name'])
 
-obj = {'name': 'test'}
+#
+# arr.append(obj)
+# # arr += obj
+#
+# print(obj)
+# print(arr)
 
-arr.append(obj)
-# arr += obj
+# bad_specs = ["blah", 'condition']
+# if any( (x == test_str) for x in bad_specs):
+#     print('good :)')
+# else:
+#     print('bad :(')
 
-print(obj)
-print(arr)
+# arr = [1,2,3,4]
+# random.shuffle(arr)
+# print(arr)

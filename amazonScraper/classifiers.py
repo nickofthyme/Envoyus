@@ -4,7 +4,7 @@ import dill as pickle
 import random
 import re
 
-from nltk import NaiveBayesClassifier, classify
+from nltk import NaiveBayesClassifier, classify, MaxentClassifier
 import os.path
 
 # FEATURES
@@ -105,15 +105,4 @@ def spec_classifier(s):
         f.close()
         return classifier(s)
 
-
-# from flask import Flask, jsonify, request
-# from flask_cors import CORS, cross_origin
-# app = Flask(__name__)
-# CORS(app)
-
-# @app.route("/", methods=['POST'])
-# def hello():
-#     json = request.json #get_json(silent=True)
-#     return jsonify({'result': classifier(json['input'])})
-#
-# app.run()
+print(spec_classifier('8GB'))

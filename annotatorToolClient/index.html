@@ -1,0 +1,298 @@
+<html>
+<head>
+  <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/jquery.webui-popover/2.1.15/jquery.webui-popover.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bluebird/latest/bluebird.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/2.1.15/jquery.webui-popover.min.css">
+  <style>
+    body {
+      font-family: 'Open Sans'
+    }
+    p {
+      font-size: 24px
+    }
+    #content {
+      flex: 2;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    #annotation {
+      border: 1px solid rgb(203, 203, 203);
+      flex: 1;
+    }
+    .annotation {
+      cursor: pointer; cursor: hand;
+      padding: 5px;
+    }
+    #header {
+      margin-bottom: 20px;
+    }
+    .next-span {
+      float: right;
+      margin-right: 10px;
+    }
+    .header-text {
+      font-size: 28px;
+      margin-left: 10px;
+    }
+    #counter {
+      color: rgb(134, 134, 134)
+    }
+    .pop {
+      background-color: 'white';
+      width: 100px;
+      height: 100px;
+    }
+    .highlight {
+      background-color: rgb(255, 254, 159)
+    }
+    .chunk {
+      background-color: rgb(168, 227, 142)
+    }
+    .hflex {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .vflex {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+    .popup {
+      width: 250px;
+      padding: 5px;
+      border: 1px solid rgb(203, 203, 203);
+      border-radius: 10px;
+      background-color: white;
+    }
+    .negative {
+      background-color: rgb(255, 212, 212);
+    }
+    .add {
+      margin-right: 30px;
+      color: rgb(186, 186, 186);
+      cursor: pointer; cursor: hand;
+    }
+  </style>
+  <script>
+  const co = Promise.coroutine;
+  let listings;
+  let listingStartIdx = 5;
+  let outputData = [];
+  let annotations = [];
+  let annotationCount = 0;
+  let currentAnnotation;
+  let sentences;
+  let output = [];
+
+
+  function renderAnnotations() {
+    let ann = $('#annotation');
+    ann.html('');
+    let newHTML = `
+      ${annotations.map((a, idx) => a.removed ? '' : `<p class="annotation" onclick="removeAnnotation(${idx})">${a.annotationPhrase} :: ${a.value === 0 ? 'Chunk' : a.value}</p>`).join('')}
+    `
+    ann.html(newHTML);
+  }
+
+  function getSentenceByDataIdx(idx) {
+    return $('.sentence').filter(function() {
+      return $(this).data('index') === idx
+    }).first()
+  }
+
+  function removeAnnotation(index) {
+    let toRemove = annotations[index]
+    let $sentence = getSentenceByDataIdx(toRemove['sentenceId'])
+    $sentence.children().slice(toRemove.begin, toRemove.end+1).each(function() {
+      $(this).removeClass('highlight')
+      $(this).removeClass('chunk')
+    })
+
+    annotations.splice(index, 1)
+    renderAnnotations()
+  }
+
+  function addAnnotationClass(annotation, moreClass) {
+    let toChange = annotation
+    let $sentence = getSentenceByDataIdx(toChange['sentenceId'])
+    $sentence.children().slice(toChange.begin, toChange.end+1).each(function() {
+      $(this).addClass(moreClass)
+    })
+  }
+
+  let isPopupOpen = false
+  function addAnnotation(value) {
+    $('.popup').remove()
+    isPopupOpen = false
+    currentAnnotation['value'] = value
+    if (value === 0) addAnnotationClass(currentAnnotation, 'chunk')
+    annotations.push(currentAnnotation)
+    renderAnnotations()
+  }
+
+  let addSelection = (fromNode, toNode) => {
+    if (isPopupOpen ||
+      $(fromNode).hasClass('highlight') ||
+      $(toNode).hasClass('highlight') ||
+      $(fromNode).hasClass('add') ||
+      $(toNode).hasClass('add')) return;
+
+    openPopup(fromNode, toNode)
+    let text = ""
+    let run = true;
+
+    let words = []
+    for (let node = fromNode; run; node = $(node).next()[0]) {
+      let $node = $(node)
+      $node.addClass('highlight')
+      text += $node.text()
+      words.push([$node.data('word'), $node.data('tag')])
+      if (!node || node === toNode) run = false;
+    }
+
+    currentAnnotation = {
+      sentenceId: $(toNode).parent().data('index'),
+      begin: $(fromNode).data('widx'),
+      end: $(toNode).data('widx'),
+      annotationPhrase: text,
+      words,
+    };
+
+    return text
+  }
+
+  function openPopup(fromNode, toNode) {
+    let rect = toNode.getBoundingClientRect()
+
+    // console.log(JSON.stringify(annotation))
+    let popup = $(`<div class="popup hflex" style="position:absolute;top:${rect.top};left:${rect.right}">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+        ${[1,2,3,4,5].map(x => `<button type="button" class="btn btn-secondary" onclick="addAnnotation(${x})"> ${x}</button>`).join('')}
+      </div>
+    </div>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+        ${[-1,-2,-3,-4,-5].map(x => `<button type="button" class="btn btn-secondary negative" onclick="addAnnotation(${x})"> ${x}</button>`).join('')}
+      </div>
+    </div>
+    <br />
+    <button type="button" class="btn btn-primary" onclick="addAnnotation(0)">Chunk</button>
+    </div>`)
+    // add to annotations array
+    $('body').append(popup)
+    isPopupOpen = true
+  }
+
+  function onAddSentence(idx) {
+    let $wordElems = getSentenceByDataIdx(idx).children()
+    if ($wordElems.length === 0) return
+    let startNode = $wordElems[0]
+    let endNode = $wordElems[$wordElems.length - 1]
+    addSelection(startNode, endNode)
+  }
+
+  function onSelect() {
+    let sel = window.getSelection()
+
+    let startNode = sel.anchorNode.parentNode
+    let endNode = sel.extentNode.parentNode
+    addSelection(startNode, endNode)
+
+    console.log(annotations[annotationCount]);
+    annotationCount += 1;
+  }
+  function checkSaveData() {
+    if (annotations.length) {
+      let data = []
+      annotations.forEach(ann => {
+        // let entities = output[ann['sentenceId']]['entities'];
+        let sentence = []
+        getSentenceByDataIdx(ann.sentenceId).children().each(function() {
+          sentence.push([$(this).data('word'), $(this).data('tag')])
+        })
+        data.push({
+          words: ann.words,
+          value: ann.value,
+          begin: ann.begin,
+          end: ann.end,
+          sentence,
+        })
+      })
+      axios.post('http://localhost:5000/annotation', data).then(result => console.log(result))
+      outputData = outputData.concat(data)
+      console.log(outputData)
+    }
+  }
+
+  let loadContent = co(function*() {
+    checkSaveData()
+    output = []
+    annotations = []
+    $('#counter').text(" Listing Number: " + listingStartIdx)
+    renderAnnotations()
+    let response = yield axios.post('http://localhost:3000/graphql',
+      `{
+        craigslist(query: "macbook pro", from: ${listingStartIdx}, size:1) {
+          results {
+            title
+            description
+          }
+        }
+      }`,
+      { headers: { 'Content-Type': 'application/graphql' }
+    })
+    listings = response.data.data.craigslist.results
+    response = yield axios.post('http://localhost:5000/', {input: listings[0].description})
+    sentences = response.data.result
+
+    let displayHTML = sentences.map((sentence, index) => {
+      output.push({
+        sentence,
+        entities: []
+      })
+      return `<span class="add" onclick="onAddSentence(${index})">+add</span><span class="sentence" data-index=${index}>` + sentence.map(([word, tag], widx) => `<span class="tool" title="${tag}" data-tag="${tag}" data-word="${word}" data-widx="${widx}">${word} </span>`).join('') + '</span>'
+    }).join('<br  />')
+    console.log(output)
+    $('#content').html(displayHTML)
+    $('.tool').tooltip({placement: 'bottom'})
+  });
+
+  $(document).ready(function () {
+    $('#content').mouseup(onSelect)
+    $('#next-link').click(() => {
+      loadContent();
+      listingStartIdx++;
+    })
+
+    loadContent()
+    listingStartIdx++;
+  })
+  </script>
+</head>
+<body>
+  <div class='hflex'>
+    <div id='header'>
+      <span class="header-text">Awesome Annotator Deluxe</span>
+      <span class="header-text" id="counter"></span>
+      <span class="header-text next-span"><a id='next-link' href="#">Next</a></span>
+    </div>
+    <div class='vflex'>
+      <div id='content'></div>
+      <div id='annotation'>
+      </div>
+    </div>
+</div>
+  </div>
+</body>
+</html>

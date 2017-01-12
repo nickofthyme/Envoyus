@@ -5,9 +5,9 @@ const config = require('../../config/config').GATEWAY_SERVER;
 const graphqlHTTP = require('express-graphql');
 const {buildSchema} = require('graphql');
 const schema = require('./schema.js');
-
+const cors = require('cors');
 const app = express();
-
+app.use(cors())
 app.use(compression());
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 

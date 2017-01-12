@@ -47,7 +47,6 @@ def spec_features(s):
         'alpha_num_ratio': alpha_num_ratio_ft(s),
         'largest_number': largest_number_ft(s)
     }
-
     return features
 
 def file_exists(path):
@@ -70,7 +69,7 @@ def train_spec_classifier():
         specs += perSpec
 
     random.shuffle(specs)
-
+    print(specs)
     featuresets = [(spec_features(s), label) for (s, label) in specs]
     print(len(featuresets))
     train_set, test_set = featuresets[:], featuresets[1200:]

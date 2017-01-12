@@ -72,8 +72,12 @@ const Query = new GraphQLObjectType({
       description: 'Keyword query to search',
       args: {
         query: {
-          type: new GraphQLNonNull(GraphQLString),
-          description: 'Keywords separated by spaces'
+          type: GraphQLString,
+          description: 'Searches title for keywords separated by spaces'
+        },
+        descQuery: {
+          type: GraphQLString,
+          description: 'Searches description for keywords separated by spaces'
         },
         size: {
           type: GraphQLInt,
@@ -87,11 +91,12 @@ const Query = new GraphQLObjectType({
       resolve: async (_, args) => {
         let request;
         try {
+          let matchObj = {};
+          if (args.query) matchObj['title'] = args.query;
+          if (args.descQuery) matchObj['description'] = args.descQuery;
           let postReq = {
             'query': {
-              'match': {
-                'description': args.query
-              }
+              'match': matchObj
             }
           };
           if (args.size) { postReq.size = args.size; }
@@ -101,8 +106,7 @@ const Query = new GraphQLObjectType({
         } catch(error) {
           console.error('NonFatal: ' + error);
         }
-        results = request.data.hits.hits.map(listing => listing._source);
-
+        let results = request.data.hits.hits.map(listing => listing._source);
         let listingsHitResult = {
           metaData: {
             total: request.data.hits.total,

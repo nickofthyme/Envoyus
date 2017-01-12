@@ -254,7 +254,8 @@
     })
     listings = response.data.data.craigslist.results
     response = yield axios.post('http://localhost:5000/', {input: listings[0].description})
-    sentences = response.data.result
+    let titleResponse = yield axios.post('http://localhost:5000/', {input: listings[0].title})
+    sentences = titleResponse.data.result.concat(response.data.result)
 
     let displayHTML = sentences.map((sentence, index) => {
       output.push({

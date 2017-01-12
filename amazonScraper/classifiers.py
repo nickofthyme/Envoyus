@@ -57,38 +57,63 @@ def get_training_data(product):
     with open(product + '.json') as data_file:
         return json.load(data_file)
 
-def get_spec_list(specs):
-    spec_list = {}
-    for spec in specs:
-        spec_list[spec[1]] = None
-    return spec_list
 
 # CLASSIFIERS
 def train_spec_classifier(product = 'mbp'):
     tr_data = get_training_data(product)
-    # with open('mbp.json') as data_file:
-    #     mbpj = json.load(data_file)
-    # with open('mbair.json') as data_file:
-    #     mbairj = json.load(data_file)
-    # with open('delllaptop.json') as data_file:
-    #     dellj = json.load(data_file)
-    # with open('tablets.json') as data_file:
-    #     tabletj = json.load(data_file)
     specs = []
     spec_list = {}
+    fav_spec = ('', 0)
     for listing in (tr_data):
         for key, spec in listing.items():
             perSpec = [(spec, key)]
             specs += perSpec
-            print('per spec ==>', perSpec[0])
-            # get all specs
-            spec_list[perSpec[0][1]] = None
+            # get list of all specs
+            try:
+                spec_list[perSpec[0][1]] += 1
+            except:
+                spec_list[perSpec[0][1]] = 1
+            if spec_list[perSpec[0][1]] > fav_spec[1]:
+                fav_spec = (perSpec[0][1], spec_list[perSpec[0][1]])
 
-    print('spec list' , spec_list)
+    # print('spec', specs)
+    top_spec_list = []
+    for spec in spec_list:
+        # eliminates ambiguous specs related to Amazon
+        bad_specs = [
+            'Series',
+            'Item model number',
+            'Hardware Platform',
+            'Operating System',
+            # 'Product Dimensions',
+            # 'Item Dimensions  L x W x H',
+            'Color',
+            'ASIN',
+            'Customer Reviews',
+            'Best Sellers Rank',
+            'Shipping Weight',
+            'Domestic Shipping',
+            'International Shipping',
+            'Date First Available',
+            # 'Product Name',
+            'Shipping Information',
+            'Manufacturer',
+            'Date first available at Amazon.com'
+        ]
 
-    random.shuffle(specs)
+        if all( not(x == spec) for x in bad_specs):
+            # pulls top specs (if over 0% have the given spec)
+            if spec_list[spec] > fav_spec[1]*0:
+                top_spec_list += [(spec)]
 
-    featuresets = [(spec_features(s), label) for (s, label) in specs]
+    filtered_specs = []
+    for spec in specs:
+        # print('spec =>' ,spec[1])
+        if any( (x == spec[1]) for x in top_spec_list):
+            filtered_specs += [(spec)]
+
+    random.shuffle(filtered_specs)
+    featuresets = [(spec_features(s), label) for (s, label) in filtered_specs]
     print(len(featuresets))
     train_set, test_set = featuresets[:], featuresets[1200:]
 

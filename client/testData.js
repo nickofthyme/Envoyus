@@ -6,7 +6,7 @@ const testData = [
     _score: 1,
     _source: {
       postDate: '2017-01-04T02:31:31-0800',
-      description: "<section id=\"postingbody\">\n        <div class=\"print-information print-qrcode-container\">\n            <p class=\"print-qrcode-label\">QR Code Link to This Post</p>\n            <div class=\"print-qrcode\" data-location=\"http://sfbay.craigslist.org/sby/sys/5944734868.html\"></div>\n        </div>\nI have 2010 MacBook Pro model excellent condition just put new battery had to computer refurbished a new battery installed just recently bought a new MacBook Pro so I no longer need my older model it's in great shape a good started computer for someone original price for this computer when I first bought it for $1500 I'm pretty firm at $375but will negotiate.<br>\n\t<br>\n    </section>",
+      description: '<section id="postingbody">\n        <div class="print-information print-qrcode-container">\n            <p class="print-qrcode-label">QR Code Link to This Post</p>\n            <div class="print-qrcode" data-location="http://sfbay.craigslist.org/sby/sys/5944734868.html"></div>\n        </div>\nI have 2010 MacBook Pro model excellent condition just put new battery had to computer refurbished a new battery installed just recently bought a new MacBook Pro so I no longer need my older model it\'s in great shape a good started computer for someone original price for this computer when I first bought it for $1500 I\'m pretty firm at $375but will negotiate.<br>\n\t<br>\n    </section>',
       title: '2010 MacBook pro 375 awesome computer',
       sellerEmail: '',
       price: '$375',
@@ -26,10 +26,10 @@ const testData = [
         'https://images.craigslist.org/00h0h_irVsHveduNb_600x450.jpg',
         'https://images.craigslist.org/00Q0Q_7C6UmIMoLg9_600x450.jpg',
         'https://images.craigslist.org/00h0h_cNmn0MFPqA2_600x450.jpg',
-        'https://images.craigslist.org/00202_9mODMDJLJ0h_600x450.jpg',
+        'https://images.craigslist.org/00202_9mODMDJLJ0h_600x450.jpg'
       ],
-      sellerName: '',
-    },
+      sellerName: ''
+    }
   },
   {
     _index: 'cl',
@@ -38,7 +38,7 @@ const testData = [
     _score: 1,
     _source: {
       postDate: '2017-01-03T23:02:57-0800',
-      description: "<section id=\"postingbody\">\n        <div class=\"print-information print-qrcode-container\">\n            <p class=\"print-qrcode-label\">QR Code Link to This Post</p>\n            <div class=\"print-qrcode\" data-location=\"http://sfbay.craigslist.org/sfc/sys/5944673100.html\"></div>\n        </div>\nSelling my MacBook Pro since I just upgraded to the latest one.<br>\nIt's in really good shape with absolutely no scratches anywhere but the bottom of the laptop, and only very minor ones there too.<br>\nI ran a disk test to make sure the SSD is still in perfect working order. Never had any issues with this computer and it hasn't really been used that much overall.<br>\nKeys show almost no signs of wear and the screen has no marks or signs of wear at all.<p>\n\nSee full specs here:\nhttps://support.apple.com/kb/sp653?locale=en_US\n</p><p>\nMacBook Pro (Retina, Mid 2012)<br>\nProcessor: 2.6 GHz Intel Quad Core i7<br>\nMemory: 16 GB 1600 MHz DDR3<br>\nGraphic: Intel HD Graphics 4000 1536 MB<br>\nStorage: 512GB SDD Drive<br>\nNumber of Processors: 1<br>\n  Total Number of Cores: 4<br>\n  L2 Cache (per Core): 256 KB<br>\n  L3 Cache: 6 MB<br>\nDisplay Type:\tMatte LCD<br>\n  Resolution:\t1680 x 1050 <br>\nBrand new install of OS 10.12.2 Sierra</p>    </section>",
+      description: '<section id="postingbody">\n        <div class="print-information print-qrcode-container">\n            <p class="print-qrcode-label">QR Code Link to This Post</p>\n            <div class="print-qrcode" data-location="http://sfbay.craigslist.org/sfc/sys/5944673100.html"></div>\n        </div>\nSelling my MacBook Pro since I just upgraded to the latest one.<br>\nIt\'s in really good shape with absolutely no scratches anywhere but the bottom of the laptop, and only very minor ones there too.<br>\nI ran a disk test to make sure the SSD is still in perfect working order. Never had any issues with this computer and it hasn\'t really been used that much overall.<br>\nKeys show almost no signs of wear and the screen has no marks or signs of wear at all.<p>\n\nSee full specs here:\nhttps://support.apple.com/kb/sp653?locale=en_US\n</p><p>\nMacBook Pro (Retina, Mid 2012)<br>\nProcessor: 2.6 GHz Intel Quad Core i7<br>\nMemory: 16 GB 1600 MHz DDR3<br>\nGraphic: Intel HD Graphics 4000 1536 MB<br>\nStorage: 512GB SDD Drive<br>\nNumber of Processors: 1<br>\n  Total Number of Cores: 4<br>\n  L2 Cache (per Core): 256 KB<br>\n  L3 Cache: 6 MB<br>\nDisplay Type:\tMatte LCD<br>\n  Resolution:\t1680 x 1050 <br>\nBrand new install of OS 10.12.2 Sierra</p>    </section>',
       title: 'Apple MacBook Pro 15" (Mid 2012), 2.6Ghz i7, 16GB RAM, 512 GB SSD',
       sellerEmail: '',
       price: '$1000',
@@ -51,7 +51,7 @@ const testData = [
       updateDate: '2017-01-04T13:19:20-0800',
       lat: '37.767492',
       attributes: [
-        '<p class="attrgroup">\n           <span>condition: <b>excellent</b></span><br>\n           <span>make / manufacturer: <b>Apple</b></span><br>\n           <span>model name / number: <b>A1286</b></span><br>\n   </p>',
+        '<p class="attrgroup">\n           <span>condition: <b>excellent</b></span><br>\n           <span>make / manufacturer: <b>Apple</b></span><br>\n           <span>model name / number: <b>A1286</b></span><br>\n   </p>'
       ],
       postId: '5944673100',
       imageUrls: [
@@ -66,10 +66,10 @@ const testData = [
         'https://images.craigslist.org/01111_4eDsVN2z72b_600x450.jpg',
         'https://images.craigslist.org/00J0J_7YtBaE9vq5X_600x450.jpg',
         'https://images.craigslist.org/00Z0Z_lPenZbuBG2w_600x450.jpg',
-        'https://images.craigslist.org/01717_laQUTacFmNp_600x450.jpg',
+        'https://images.craigslist.org/01717_laQUTacFmNp_600x450.jpg'
       ],
-      sellerName: '',
-    },
+      sellerName: ''
+    }
   },
   {
     _index: 'cl',
@@ -78,7 +78,7 @@ const testData = [
     _score: 1,
     _source: {
       postDate: '2016-12-06T22:24:48-0800',
-      description: "<section id=\"postingbody\">\n        <div class=\"print-information print-qrcode-container\">\n            <p class=\"print-qrcode-label\">QR Code Link to This Post</p>\n            <div class=\"print-qrcode\" data-location=\"http://sfbay.craigslist.org/sby/sys/5908918547.html\"></div>\n        </div>\nMacBook Pro 15\" RETINA/Late 2013/2.0GHz Intel i7/16GB/256GB SSD/Excellent LAPTOP!<br>\n<br>\nPLEASE NOTE THIS IS A LATE 2013 MODEL WHICH USES THE NEWER HASWELL INTEL ARCHITECTURE! Has a manufacture date of Jan. 2014, see coconut report screenshot.<br>\n<br>\nOnly 71 Cycles on it, with about 96-97% of original capacity! NEARLY NEW!  See coconut battery report!<br>\n<br>\nTHIS a 9.5/10 CONDITION MACBOOK PRO! NO MAJOR COSMETICS ISSUES only one scratch on bottom of laptop which is noticeable.<br>\n<br>\nRunning macOS 10.12.2! EFI Firmware Update Done! COMES WITH MS OFFICE 2016 (Updated to Dec. 2016 Package). FINAL CUT PRO 2016 and LOGIC PRO X 2016 INSTALLED.<br>\n<br>\nWILL Come with a Apple OEM 85W Magsafe 2 Charger with Wall Plug + AC Extension that has been 100% Tested! THE KEYS ARE PERFECT AND CLEAN! I have used a combo of special solution to clean the entire laptop.<br>\n<br>\n*** This will be tied to a Bill of Sale! 30-Day Warranty included in writing from our business which will guarantee you won't have any issues with the machine! ***<br>\n<br>\nWWW.KPLUSCOMPUTERS.TECH is our website. We perform IT managed services for SMB's and are Independent Apple Sellers.<br>\n<br>\nPlease e-mail me ASAP with your contact # if you wish to speak with me. I will not accept trades, this is a cash only sale. No personal checks. I will not respond to text messages.    </section>",
+      description: '<section id="postingbody">\n        <div class="print-information print-qrcode-container">\n            <p class="print-qrcode-label">QR Code Link to This Post</p>\n            <div class="print-qrcode" data-location="http://sfbay.craigslist.org/sby/sys/5908918547.html"></div>\n        </div>\nMacBook Pro 15" RETINA/Late 2013/2.0GHz Intel i7/16GB/256GB SSD/Excellent LAPTOP!<br>\n<br>\nPLEASE NOTE THIS IS A LATE 2013 MODEL WHICH USES THE NEWER HASWELL INTEL ARCHITECTURE! Has a manufacture date of Jan. 2014, see coconut report screenshot.<br>\n<br>\nOnly 71 Cycles on it, with about 96-97% of original capacity! NEARLY NEW!  See coconut battery report!<br>\n<br>\nTHIS a 9.5/10 CONDITION MACBOOK PRO! NO MAJOR COSMETICS ISSUES only one scratch on bottom of laptop which is noticeable.<br>\n<br>\nRunning macOS 10.12.2! EFI Firmware Update Done! COMES WITH MS OFFICE 2016 (Updated to Dec. 2016 Package). FINAL CUT PRO 2016 and LOGIC PRO X 2016 INSTALLED.<br>\n<br>\nWILL Come with a Apple OEM 85W Magsafe 2 Charger with Wall Plug + AC Extension that has been 100% Tested! THE KEYS ARE PERFECT AND CLEAN! I have used a combo of special solution to clean the entire laptop.<br>\n<br>\n*** This will be tied to a Bill of Sale! 30-Day Warranty included in writing from our business which will guarantee you won\'t have any issues with the machine! ***<br>\n<br>\nWWW.KPLUSCOMPUTERS.TECH is our website. We perform IT managed services for SMB\'s and are Independent Apple Sellers.<br>\n<br>\nPlease e-mail me ASAP with your contact # if you wish to speak with me. I will not accept trades, this is a cash only sale. No personal checks. I will not respond to text messages.    </section>',
       title: 'MacBook Pro 15" RETINA/2013/2.0GHz Intel i7/16GB/256GB SSD/VERY GOOD!!',
       sellerEmail: '',
       price: '$1050',
@@ -91,7 +91,7 @@ const testData = [
       updateDate: '2017-01-03T16:36:26-0800',
       lat: '37.256800',
       attributes: [
-        '<p class="attrgroup">\n           <span>condition: <b>excellent</b></span><br>\n   </p>',
+        '<p class="attrgroup">\n           <span>condition: <b>excellent</b></span><br>\n   </p>'
       ],
       postId: '5908918547',
       imageUrls: [
@@ -103,10 +103,10 @@ const testData = [
         'https://images.craigslist.org/00T0T_cyEqE5gjzSG_600x450.jpg',
         'https://images.craigslist.org/00J0J_1OtsJ3250o2_600x450.jpg',
         'https://images.craigslist.org/00h0h_9ZYgcs1nCLW_600x450.jpg',
-        'https://images.craigslist.org/00f0f_4zpXa9int5o_600x450.jpg',
+        'https://images.craigslist.org/00f0f_4zpXa9int5o_600x450.jpg'
       ],
-      sellerName: '',
-    },
+      sellerName: ''
+    }
   },
   {
     _index: 'cl',
@@ -128,12 +128,12 @@ const testData = [
       updateDate: '2017-01-03T14:36:25-0800',
       lat: '37.375614',
       attributes: [
-        '<p class="attrgroup">\n           <span>mobile OS: <b>apple iOS</b></span><br>\n   </p>',
+        '<p class="attrgroup">\n           <span>mobile OS: <b>apple iOS</b></span><br>\n   </p>'
       ],
       postId: '5936615845',
       imageUrls: [],
-      sellerName: '',
-    },
+      sellerName: ''
+    }
   },
   {
     _index: 'cl',
@@ -157,8 +157,8 @@ const testData = [
       attributes: [],
       postId: '5916623621',
       imageUrls: [],
-      sellerName: '',
-    },
+      sellerName: ''
+    }
   },
   {
     _index: 'cl',
@@ -180,15 +180,15 @@ const testData = [
       updateDate: '2017-01-02T20:56:47-0800',
       lat: '37.271300',
       attributes: [
-        '<p class="attrgroup">\n           <span>make / manufacturer: <b>Apple</b></span><br>\n           <span>model name / number: <b>The 85 Watt MagSafe Power Adapte</b></span><br>\n   </p>',
+        '<p class="attrgroup">\n           <span>make / manufacturer: <b>Apple</b></span><br>\n           <span>model name / number: <b>The 85 Watt MagSafe Power Adapte</b></span><br>\n   </p>'
       ],
       postId: '5916636604',
       imageUrls: [
         'https://images.craigslist.org/00d0d_4Ozt49FLDM8_600x450.jpg',
-        'https://images.craigslist.org/00f0f_6Qvbho5I8Zu_600x450.jpg',
+        'https://images.craigslist.org/00f0f_6Qvbho5I8Zu_600x450.jpg'
       ],
-      sellerName: '',
-    },
+      sellerName: ''
+    }
   },
   {
     _index: 'cl',
@@ -210,16 +210,16 @@ const testData = [
       updateDate: '2017-01-02T02:28:55-0800',
       lat: '37.338159',
       attributes: [
-        '<p class="attrgroup">\n           <span>condition: <b>excellent</b></span><br>\n           <span>make / manufacturer: <b>Apple</b></span><br>\n           <span>model name / number: <b>MF839LL/J</b></span><br>\n           <span>size / dimensions: <b>12.78x0.95x8.4</b></span><br>\n   </p>',
+        '<p class="attrgroup">\n           <span>condition: <b>excellent</b></span><br>\n           <span>make / manufacturer: <b>Apple</b></span><br>\n           <span>model name / number: <b>MF839LL/J</b></span><br>\n           <span>size / dimensions: <b>12.78x0.95x8.4</b></span><br>\n   </p>'
       ],
       postId: '5935466672',
       imageUrls: [
         'https://images.craigslist.org/00P0P_f0VFVx2KxLc_600x450.jpg',
         'https://images.craigslist.org/00G0G_iFhQvLQcA2c_600x450.jpg',
-        'https://images.craigslist.org/00n0n_9trAalaUwXw_600x450.jpg',
+        'https://images.craigslist.org/00n0n_9trAalaUwXw_600x450.jpg'
       ],
-      sellerName: '',
-    },
+      sellerName: ''
+    }
   },
   {
     _index: 'cl',
@@ -228,8 +228,8 @@ const testData = [
     _score: 1,
     _source: {
       postDate: '2016-12-09T21:35:44-0800',
-      description: "<section id=\"postingbody\">\n        <div class=\"print-information print-qrcode-container\">\n            <p class=\"print-qrcode-label\">QR Code Link to This Post</p>\n            <div class=\"print-qrcode\" data-location=\"http://sfbay.craigslist.org/eby/sys/5913189434.html\"></div>\n        </div>\napple laptop macbook air 11'' i5 1.6ghz 4gb ram 128 SSD $750<br>\n<br>\nmacOS Sierra MS Office +  final cut pro<br>\n<br>\napple warranty august 2017 <br>\n<br>\ntext or call only : \n <a href=\"/fb/sfo/sys/5913189434\" class=\"showcontact\" title=\"click to show contact info\" rel=\"nofollow\">show contact info</a>\n<br>\n<br>\nNo Nigerian Scam . No Paypal Scam    </section>",
-      title: "macbook air 11'' i5 4gb ram apple warranty",
+      description: '<section id="postingbody">\n        <div class="print-information print-qrcode-container">\n            <p class="print-qrcode-label">QR Code Link to This Post</p>\n            <div class="print-qrcode" data-location="http://sfbay.craigslist.org/eby/sys/5913189434.html"></div>\n        </div>\napple laptop macbook air 11\'\' i5 1.6ghz 4gb ram 128 SSD $750<br>\n<br>\nmacOS Sierra MS Office +  final cut pro<br>\n<br>\napple warranty august 2017 <br>\n<br>\ntext or call only : \n <a href="/fb/sfo/sys/5913189434" class="showcontact" title="click to show contact info" rel="nofollow">show contact info</a>\n<br>\n<br>\nNo Nigerian Scam . No Paypal Scam    </section>',
+      title: 'macbook air 11\'\' i5 4gb ram apple warranty',
       sellerEmail: '',
       price: '$750',
       postingUrl: 'http://sfbay.craigslist.org/eby/sys/5913189434.html',
@@ -248,10 +248,10 @@ const testData = [
         'https://images.craigslist.org/00K0K_6r9ZLcvEUXx_600x450.jpg',
         'https://images.craigslist.org/00e0e_elAUXwCpDJK_600x450.jpg',
         'https://images.craigslist.org/00a0a_ccacpNvTy0t_600x450.jpg',
-        'https://images.craigslist.org/00s0s_PS6frKIwG1_600x450.jpg',
+        'https://images.craigslist.org/00s0s_PS6frKIwG1_600x450.jpg'
       ],
-      sellerName: '',
-    },
+      sellerName: ''
+    }
   },
   {
     _index: 'cl',
@@ -273,7 +273,7 @@ const testData = [
       updateDate: '2017-01-02T09:58:23-0800',
       lat: '37.496900',
       attributes: [
-        '<p class="attrgroup">\n           <span>condition: <b>good</b></span><br>\n           <span>make / manufacturer: <b>apple</b></span><br>\n           <span>model name / number: <b>macbook pro</b></span><br>\n           <span>size / dimensions: <b>13 inch</b></span><br>\n   </p>',
+        '<p class="attrgroup">\n           <span>condition: <b>good</b></span><br>\n           <span>make / manufacturer: <b>apple</b></span><br>\n           <span>model name / number: <b>macbook pro</b></span><br>\n           <span>size / dimensions: <b>13 inch</b></span><br>\n   </p>'
       ],
       postId: '5941126878',
       imageUrls: [
@@ -285,10 +285,10 @@ const testData = [
         'https://images.craigslist.org/00j0j_aMTTepAEYRj_600x450.jpg',
         'https://images.craigslist.org/00T0T_fD3xSvrARs9_600x450.jpg',
         'https://images.craigslist.org/00909_9Y8rxqU5DmU_600x450.jpg',
-        'https://images.craigslist.org/01010_1EWTV9KhmxR_600x450.jpg',
+        'https://images.craigslist.org/01010_1EWTV9KhmxR_600x450.jpg'
       ],
-      sellerName: '',
-    },
+      sellerName: ''
+    }
   },
   {
     _index: 'cl',
@@ -297,7 +297,7 @@ const testData = [
     _score: 1,
     _source: {
       postDate: '2016-12-16T08:56:07-0800',
-      description: "<section id=\"postingbody\">\n        <div class=\"print-information print-qrcode-container\">\n            <p class=\"print-qrcode-label\">QR Code Link to This Post</p>\n            <div class=\"print-qrcode\" data-location=\"http://sfbay.craigslist.org/sby/sys/5921775592.html\"></div>\n        </div>\nmStand is made of a single solid piece of aluminum matching MacBook Pro, MacBook Air, and MacBook's anodized finish. It transforms your notebook into a stable and stylish workstation.<br>\n<br>\nMore information from Apple's Website: <br>\nhttp://www.apple.com/shop/product/TN740ZM/A/rain-design-mstand-for-macbook-pro-macbook-air-macbook<br>\n<br>\nRetail: $49.95<br>\n<br>\nSpecs: <br>\nMaterial: Aluminum<br>\nHeight: 5.9 in./15 cm<br>\nLength: 10 in./25.4 cm<br>\nWidth: 7.5 in./19.05 cm<br>\nWeight: 3 lb./1.36 kg    </section>",
+      description: '<section id="postingbody">\n        <div class="print-information print-qrcode-container">\n            <p class="print-qrcode-label">QR Code Link to This Post</p>\n            <div class="print-qrcode" data-location="http://sfbay.craigslist.org/sby/sys/5921775592.html"></div>\n        </div>\nmStand is made of a single solid piece of aluminum matching MacBook Pro, MacBook Air, and MacBook\'s anodized finish. It transforms your notebook into a stable and stylish workstation.<br>\n<br>\nMore information from Apple\'s Website: <br>\nhttp://www.apple.com/shop/product/TN740ZM/A/rain-design-mstand-for-macbook-pro-macbook-air-macbook<br>\n<br>\nRetail: $49.95<br>\n<br>\nSpecs: <br>\nMaterial: Aluminum<br>\nHeight: 5.9 in./15 cm<br>\nLength: 10 in./25.4 cm<br>\nWidth: 7.5 in./19.05 cm<br>\nWeight: 3 lb./1.36 kg    </section>',
       title: 'Silver Rain Design mStand for MacBook Pro/MacBook Air/MacBook',
       sellerEmail: '',
       price: '$30',
@@ -310,13 +310,13 @@ const testData = [
       updateDate: '2017-01-04T11:08:31-0800',
       lat: '37.389300',
       attributes: [
-        '<p class="attrgroup">\n           <span>condition: <b>like new</b></span><br>\n           <span>make / manufacturer: <b>Apple</b></span><br>\n   </p>',
+        '<p class="attrgroup">\n           <span>condition: <b>like new</b></span><br>\n           <span>make / manufacturer: <b>Apple</b></span><br>\n   </p>'
       ],
       postId: '5921775592',
       imageUrls: [],
-      sellerName: '',
-    },
-  },
+      sellerName: ''
+    }
+  }
 ];
 
 export default testData;

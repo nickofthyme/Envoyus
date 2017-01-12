@@ -1,22 +1,22 @@
-import App from '../../src/App.jsx'
+import App from '../../src/App.jsx';
 
 describe('App', () => {
-  var {
+  const {
     Simulate,
     renderIntoDocument,
     findRenderedDOMComponentWithClass,
     scryRenderedDOMComponentsWithClass
   } = React.addons.TestUtils;
 
-  var app;
+  let app;
 
-  beforeEach(function() {
+  beforeEach(() => {
     app = renderIntoDocument(
       <App />
     );
   });
 
-  it('should be a stateful class component', function() {
+  it('should be a stateful class component', () => {
     expect(React.Component.isPrototypeOf(App)).to.be.true;
   });
 });

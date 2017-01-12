@@ -107,7 +107,7 @@ class SearchBar extends React.Component {
     this.state = {
       searchTerm: '',
       loggedIn: false,
-      token: localStorage.token,
+      token: localStorage.token
     };
   }
 
@@ -146,7 +146,7 @@ class SearchBar extends React.Component {
       // })
       } else if (localStorage.token) {
         this.setState({
-          loggedIn: true,
+          loggedIn: true
         });
       }
     }, 200);
@@ -159,13 +159,13 @@ class SearchBar extends React.Component {
 
   handleChange(event) {
     this.setState({
-      searchTerm: event.target.value,
+      searchTerm: event.target.value
     });
   }
   handleClick() {
     this.props.handleSearch(this.state.searchTerm);
     this.setState({
-      searchTerm: '',
+      searchTerm: ''
     });
   }
 
@@ -178,7 +178,7 @@ class SearchBar extends React.Component {
       // window.location.href = '/'
       // console.log('after')
       this.setState({
-        loggedIn: false,
+        loggedIn: false
       });
     }
   }

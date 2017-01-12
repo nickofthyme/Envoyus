@@ -9,44 +9,44 @@ const APP_DIR = '.';
 
 const baseWebpackConfig = {
   entry: {
-    client: [`${APP_DIR}/index.js`],
+    client: [`${APP_DIR}/index.js`]
   },
 
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    moduleDirectories: ['node_modules'],
+    moduleDirectories: ['node_modules']
   },
 
   resolveLoader: {
     root: path.join(__dirname, ' node_modules'),
-    fallback: [path.join(__dirname, '../node_modules')],
+    fallback: [path.join(__dirname, '../node_modules')]
   },
 
   output: {
     path: path.resolve(__dirname, `${APP_DIR}/dist`),
     publicPath: '/',
-    filename: '[name].js',
+    filename: '[name].js'
   },
 
   module: {
     preloader: [{
       test: /\.(jsx|js)$/,
       loader: 'eslint',
-      exclude: /node_modules/,
+      exclude: /node_modules/
     }],
 
     loaders: [{
       test: /\.(jsx|js)$/,
       loader: 'babel',
-      exclude: /node_modules/,
+      exclude: /node_modules/
     }, {
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('css!sass'),
-    }],
+      loader: ExtractTextPlugin.extract('css!sass')
+    }]
   },
 
   sassLoader: {
-    includePaths: ['src/assets/styles'],
+    includePaths: ['src/assets/styles']
   },
 
   plugins: [
@@ -54,11 +54,11 @@ const baseWebpackConfig = {
 
     new webpack.ProvidePlugin({
       $: 'jquery',
-      jQuery: 'jquery',
+      jQuery: 'jquery'
     }),
 
     new ExtractTextPlugin('[name].css', {
-      allChunks: true,
+      allChunks: true
     }),
 
     new HtmlWebpackPlugin({
@@ -68,9 +68,9 @@ const baseWebpackConfig = {
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true,
+        removeAttributeQuotes: true
       },
-      chunksSortMode: 'dependency',
+      chunksSortMode: 'dependency'
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
@@ -80,29 +80,29 @@ const baseWebpackConfig = {
                 module.resource &&
                 /\.js$/.test(module.resource) &&
                 module.resource.indexOf(
-                    path.join(__dirname, './node_modules'),
+                    path.join(__dirname, './node_modules')
                 ) === 0
         );
-      },
+      }
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      chunks: ['vendor'],
-    }),
-  ],
+      chunks: ['vendor']
+    })
+  ]
 };
 
 if (process.env.NODE_ENV === 'production') {
   module.exports = merge(baseWebpackConfig, {
     output: {
       filename: '[name].[chunkhash].js',
-      chunkFilename: '[id].[chunkhash].js',
+      chunkFilename: '[id].[chunkhash].js'
     },
 
     plugins: [
       new webpack.DefinePlugin({
-        'process.env': { NODE_ENV: '"production"' },
+        'process.env': { NODE_ENV: '"production"' }
       }),
 
       new webpack.NoErrorsPlugin(),
@@ -111,8 +111,8 @@ if (process.env.NODE_ENV === 'production') {
 
       new webpack.optimize.UglifyJsPlugin({
         compress: {
-          warnings: false,
-        },
+          warnings: false
+        }
       }),
 
       new CompressionWebpackPlugin({
@@ -120,9 +120,9 @@ if (process.env.NODE_ENV === 'production') {
         algorithm: 'gzip',
         test: new RegExp('\\.(js|css)$'),
         threshold: 10240,
-        minRatio: 0.8,
-      }),
-    ],
+        minRatio: 0.8
+      })
+    ]
   });
 } else {
   module.exports = merge(baseWebpackConfig, {
@@ -130,12 +130,12 @@ if (process.env.NODE_ENV === 'production') {
 
     plugins: [
       new webpack.DefinePlugin({
-        'process.env': { NODE_ENV: '"development"' },
+        'process.env': { NODE_ENV: '"development"' }
       }),
 
       new ExtractTextPlugin('[name].css'),
 
-      new webpack.HotModuleReplacementPlugin(),
-    ],
+      new webpack.HotModuleReplacementPlugin()
+    ]
   });
 }

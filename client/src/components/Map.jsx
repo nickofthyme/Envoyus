@@ -50,7 +50,7 @@ class Map extends React.Component {
     const markers = this.getMarkers();
     console.log(markers);
     return (
-      <div  style={{ height: '100%' }}>
+      <div style={{ height: '100%' }}>
         <Helmet
           title="Getting Started"
         />

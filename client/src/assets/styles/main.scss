@@ -1,15 +1,36 @@
 $margin: margin auto;
 $font1: 'Pacifico', cursive;
+$headerText: 'Open Sans', sans-serif;
 
 body {
     opacity: .9;
 }
 
-a.logo{
+input{
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+}
+
+Navbar{
+  border-radius: 0%
+}
+
+#logocolor{
   color: #45B3FF;
+}
+
+
+.navbar {
+  border-radius: 0px;
+  height: 70px;
+  padding: 11px 0px;
+}
+
+a.logo{
   font-family: $font1;
-  font-size: 28px;
-  padding-bottom: 15px;
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
 .logStatus{
@@ -17,13 +38,28 @@ a.logo{
   font-size: 18px;
 }
 
-input{
-  height: 30px;
-  width: 250px;
+
+.panel-heading:hover{
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer; cursor: hand;
 }
 
-Navbar{
-  border-radius: 0%
+.footer{
+
+  text-align: center;
+  padding: 20px 0px;
+  background: #222;
+  color: #9d9d9d;
 }
 
-
+.description{
+  margin: 0 auto;
+  padding-bottom: 10px;
+  font-family: $headerText;
+  font-size: 30px;
+  color: grey;
+  content-align: center;
+  text-align: center;
+  width: 500px;
+}

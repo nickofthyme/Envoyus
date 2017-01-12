@@ -42,7 +42,7 @@ class SearchBar extends React.Component {
 
       if (localStorage.token === '') {
         localStorage.clear();
-        window.location.href = 'http://localhost:3000/'; //<- logically may not need
+        window.location.href = 'http://localhost:3000/'; // <- logically may not need
       // this.setState({
       //   loggedIn: false
       // })
@@ -109,8 +109,16 @@ class SearchBar extends React.Component {
                 Log In
               </a>
             </div>
+
+            <div className="description">
+             Envoyus <br/>
+             Presents to you craigslist..<br/>
+             that doesn't suck
+            </div>
+
           <input
-            //className="form-control"            
+            placeholder="Search away"
+            // className="form-control"
             // type="text"
             // placeholder="Enter Item "
             // value={this.state.searchTerm}
@@ -136,10 +144,16 @@ class SearchBar extends React.Component {
               </a>
             </div>
 
+            <div className="description">
+             Envoyus <br/>
+             Presents to you craigslist..<br/>
+             that doesn't suck
+            </div>
+
           <input
-            //className="form-control"
+            // className="form-control"
             type="text"
-            placeholder="Enter Item "
+            placeholder="Search away"
             value={this.state.searchTerm}
             onChange={this.handleChange.bind(this)}
           />
@@ -156,4 +170,3 @@ class SearchBar extends React.Component {
 }
 
 export default SearchBar;
-

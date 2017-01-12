@@ -37,9 +37,9 @@ class Map extends React.Component {
       const marker = {
         position: {
           lat: Number(listing.lat),
-          lng: Number(listing.long),
+          lng: Number(listing.long)
         },
-        defaultAnimation: 2,
+        defaultAnimation: 2
       };
       return marker;
     });
@@ -50,7 +50,7 @@ class Map extends React.Component {
     const markers = this.getMarkers();
     console.log(markers);
     return (
-      <div  style={{ height: '100%' }}>
+      <div style={{ height: '100%' }}>
         <Helmet
           title="Getting Started"
         />

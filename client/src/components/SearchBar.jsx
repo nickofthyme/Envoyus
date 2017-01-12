@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
     this.state = {
       searchTerm: '',
       loggedIn: false,
-      token: localStorage.token,
+      token: localStorage.token
     };
   }
 
@@ -42,13 +42,13 @@ class SearchBar extends React.Component {
 
       if (localStorage.token === '') {
         localStorage.clear();
-        window.location.href = 'http://localhost:3000/'; //<- logically may not need
+        window.location.href = 'http://localhost:3000/'; // <- logically may not need
       // this.setState({
       //   loggedIn: false
       // })
       } else if (localStorage.token) {
         this.setState({
-          loggedIn: true,
+          loggedIn: true
         });
       }
     }, 200);
@@ -61,13 +61,13 @@ class SearchBar extends React.Component {
 
   handleChange(event) {
     this.setState({
-      searchTerm: event.target.value,
+      searchTerm: event.target.value
     });
   }
   handleClick() {
     this.props.handleSearch(this.state.searchTerm);
     this.setState({
-      searchTerm: '',
+      searchTerm: ''
     });
   }
 
@@ -80,7 +80,7 @@ class SearchBar extends React.Component {
       // window.location.href = '/'
       // console.log('after')
       this.setState({
-        loggedIn: false,
+        loggedIn: false
       });
     }
   }
@@ -118,7 +118,7 @@ class SearchBar extends React.Component {
 
           <input
             placeholder="Search away"
-            //className="form-control"
+            // className="form-control"
             // type="text"
             // placeholder="Enter Item "
             // value={this.state.searchTerm}
@@ -151,7 +151,7 @@ class SearchBar extends React.Component {
             </div>
 
           <input
-            //className="form-control"
+            // className="form-control"
             type="text"
             placeholder="Search away"
             value={this.state.searchTerm}

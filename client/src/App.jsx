@@ -7,7 +7,7 @@ import ResultList from './components/ResultList.jsx';
 import Map from './components/Map.jsx';
 import axios from 'axios';
 
-//React
+// React
 // import * as boot from 'react-bootstrap';
 import { Navbar } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
@@ -30,17 +30,14 @@ class App extends React.Component {
         longitude: '',
         latitude: '',
         locationGiven: true,
-        zipcode: '',
-      },
+        zipcode: ''
+      }
     };
   }
 
   componentDidMount() {
-
     this.getMyLocation();
-
   }
-
 
 
   handleSearch(searchTerm) {
@@ -60,14 +57,14 @@ class App extends React.Component {
           }
         }
       }`,
-      { headers: { 'Content-Type': 'application/graphql' },
+      { headers: { 'Content-Type': 'application/graphql' }
       })
     .then((response) => {
       console.log(response);
       const listings = response.data.data.craigslist.results;
       console.log(listings, ' this is listings');
       this.setState({
-        resultList: listings,
+        resultList: listings
       });
     });
   }
@@ -86,8 +83,8 @@ class App extends React.Component {
         location: {
           longitude,
           latitude,
-          locationGiven: true,
-        },
+          locationGiven: true
+        }
       });
       console.log(latitude, longitude);
     }
@@ -97,8 +94,8 @@ class App extends React.Component {
         location: {
           longitude: '',
           latitude: '',
-          locationGiven: false,
-        },
+          locationGiven: false
+        }
       });
       console.log('asking user for input');
     }
@@ -107,7 +104,7 @@ class App extends React.Component {
   }
 
 
-render() {
+  render() {
     return (
       <div>
 

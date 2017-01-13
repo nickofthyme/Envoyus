@@ -1,13 +1,13 @@
 from classifiers import spec_classifier, get_training_data
+from nltk.corpus import stopwords
+from nltk.tokenize import wordpunct_tokenize
 from pprint import pprint
 from copy import deepcopy
 import json
+import nltk
 
+# Import test data test.json
 test_data_mbp = get_training_data('test')
-
-
-parse_all_specs(all_specs[:10], spec_classifier, False, .6)
-
 
 def parse_all_specs(all_listings, clfyr, verbose=False, acc_tol=.5):
     for listing_obj in all_listings:
@@ -44,11 +44,11 @@ def spec_parser(str, clfyr, verbose, acc_tol):
                     'accuracy': cur_acc,
                     'string': sub_str
                 }
-    spec_reducer(final_specs, clfyr, acc_tol)
+    spec_reducer(final_specs, clfyr, verbose, acc_tol)
     return final_specs
 
 
-def spec_reducer(final_specs, clfyr, acc_tol):
+def spec_reducer(final_specs, clfyr, verbose, acc_tol):
     """reduce from left-to-right to isolate highest propability string"""
     for cur_spec in final_specs:
         str = final_specs.get(cur_spec, {}).get('string', '')
@@ -57,6 +57,7 @@ def spec_reducer(final_specs, clfyr, acc_tol):
         final_spec_info = final_specs
         for i, word in enumerate(words):
             red_str = ' '.join(words[i:])
+            if verbose: print('test string -> ',red_str)
             top_spec = clfyr(red_str)[0]
             cur_acc = top_spec[1] if top_spec[0] == cur_spec else 0
             if all([cur_acc > acc_tol, max_acc < cur_acc]):
@@ -64,15 +65,46 @@ def spec_reducer(final_specs, clfyr, acc_tol):
                     'accuracy': cur_acc,
                     'string': red_str
                 }
+                if verbose: print('spec: ', cur_spec,final_spec_info[cur_spec])
+
+    if verbose: print(final_specs)
     return final_specs
 
+def disambiguation(test_str):
+    # removes ambiguous terms from string
+    stop_words = set(stopwords.words('english'))
+    # remove punctuation from string
+    stop_words.update(['.', ',', '"', "'", '?', '!', ':', ';', '(', ')', '[', ']', '{', '}', '\n'])
+
+    return ' '.join([i.lower() for i in wordpunct_tokenize(test_str) if i.lower() not in stop_words])
 
 
 
 
+# spec_parser(test_str, spec_classifier, True, 0.5)
+
+# parse_all_specs(all_specs[:10], spec_classifier, False, .6)
 
 
+# test_str = 'this is a core i7 macbook in great condition'
 
+test_str1 = test_data_mbp[2]['description']
+round1 = spec_parser(test_str1, spec_classifier, True, 0.5)
+test_str2 = disambiguation(test_str1)
+round2 = spec_parser(test_str2, spec_classifier, True, 0.5)
+
+print('-----------raw text-----------\n')
+print(test_str1)
+
+print('\n\n-----------specs from raw text-----------\n')
+print(round1)
+
+
+print('\n\n-----------refined text-----------\n')
+print(test_str2)
+
+print('\n\n-----------specs from refined text-----------\n')
+print(round2)
 
 
 

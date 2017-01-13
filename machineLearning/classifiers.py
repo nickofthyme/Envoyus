@@ -108,13 +108,11 @@ def train_spec_classifier(product = 'mbp'):
 
     filtered_specs = []
     for spec in specs:
-        # print('spec =>' ,spec[1])
         if any( (x == spec[1]) for x in top_spec_list):
             filtered_specs += [(spec)]
 
     random.shuffle(filtered_specs)
     featuresets = [(spec_features(s), label) for (s, label) in filtered_specs]
-    print(len(featuresets))
     train_set, test_set = featuresets[:], featuresets[1200:]
 
 
@@ -122,7 +120,7 @@ def train_spec_classifier(product = 'mbp'):
     nb_classifier = NaiveBayesClassifier.train(train_set)
     # nb_classifier.classify(string)
     # nb_classifier.prob_classify(string)
-    print(classify.accuracy(nb_classifier, test_set))
+    # print(classify.accuracy(nb_classifier, test_set))
     nb_classifier.show_most_informative_features(10)
 
     def classifier(s):

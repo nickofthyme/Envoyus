@@ -1,0 +1,14 @@
+setup.py
+amazonScraper/__init__.py
+amazonScraper/items.py
+amazonScraper/middlewares.py
+amazonScraper/pipelines.py
+amazonScraper/settings.py
+amazonScraper/spiders/__init__.py
+amazonScraper/spiders/amazonListingLinksRequired_spider.py
+amazonScraper/spiders/amazonlisting_spider.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt

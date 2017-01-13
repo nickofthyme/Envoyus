@@ -2,16 +2,26 @@ import scrapy
 import requests
 from datetime import datetime
 from amazonScraper.items import AmazonscraperItem
+import json
 
 class AmazonListingSpider(scrapy.Spider):
-    name = "amazonlisting"
+    name = "amazonlistinglinksrequired"
 
     def start_requests(self):
-        headers = {'Content-Type': 'application/graphql'}
-        graph_query = """{amazon(query: "%s", SearchIndex: "%s")}""" % ( self.query, self.search_index)
-        print(graph_query)
-        r = requests.post('http://localhost:3000/graphql', data=graph_query, headers=headers)
-        urls = r.json()['data']['amazon']
+        print('====> ', self.links)
+        print('====> ', type(self.links))
+        links = self.links
+        print('====> ', links[0])
+        try:
+            if links[0] == "'":
+                urls = json.load(links)
+            if links[0] == '[':
+                urls = self.links[1:-1].split(',')
+        except:
+            urls = []
+        print('====> ', urls)
+        print('====> ', type(urls))
+
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
@@ -24,16 +34,17 @@ class AmazonListingSpider(scrapy.Spider):
 
         product = AmazonscraperItem()
 
-        specs['specs'] = []
+        product['specs'] = []
 
         for tr in tr_elems:
             product['label'] = tr.css('th::text').extract_first().strip()
             product['data'] = tr.css('td::text').extract_first().strip()
             product['specs'].append(data)
+            print('specs -> ',tr.css('td::text').extract_first().strip())
         if price:
-            product['Price'] = price
+            product['price'] = price
         if product_name:
-            product['Product Name'] = product_name
+            product['productName'] = product_name
         product['scrapeDate'] = str( datetime.now() )
 
         print(product)

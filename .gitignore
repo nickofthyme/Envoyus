@@ -5,8 +5,8 @@ node_modules
 bundle.js.map
 __pycache__
 *.pyc
+*.pkl
 
 __pycache__
 
 config/config.privatekeys.js
-

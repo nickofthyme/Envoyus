@@ -126,8 +126,8 @@ if (process.env.NODE_ENV === 'production') {
   });
 } else {
   module.exports = merge(baseWebpackConfig, {
-    devtool: '#eval-source-map',
-
+    // devtool: '#eval-source-map',
+    devtool: 'source-map',
     plugins: [
       new webpack.DefinePlugin({
         'process.env': { NODE_ENV: '"development"' }

@@ -3,9 +3,22 @@ import pickle
 import dill as pickle
 import random
 import re
+from nltk.corpus import stopwords
+from nltk.tokenize import wordpunct_tokenize
 
-from nltk import NaiveBayesClassifier, classify, MaxentClassifier
+from nltk import NaiveBayesClassifier, classify, MaxentClassifier, download
 import os.path
+
+
+def disambiguation(test_str):
+    # download stopwords
+    download('stopwords')
+    # removes ambiguous terms from string
+    stop_words = set(stopwords.words('english'))
+    # remove punctuation from string
+    stop_words.update(['.', ',', '"', "'", '?', '!', ':', ';', '(', ')', '[', ']', '{', '}', '\n'])
+
+    return ' '.join([i.lower() for i in wordpunct_tokenize(test_str) if i.lower() not in stop_words])
 
 # FEATURES
 def last_letter_ft(s):
@@ -66,7 +79,7 @@ def train_spec_classifier(product = 'mbp'):
     fav_spec = ('', 0)
     for listing in (tr_data):
         for key, spec in listing.items():
-            perSpec = [(spec, key)]
+            perSpec = [(disambiguation(spec), key)]
             specs += perSpec
             # get list of all specs
             try:

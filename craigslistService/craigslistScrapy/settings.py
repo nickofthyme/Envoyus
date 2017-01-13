@@ -9,7 +9,7 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'Educational scrapping tester'
+BOT_NAME = 'Educational tester to research'
 
 SPIDER_MODULES = ['craigslistScrapy.spiders']
 NEWSPIDER_MODULE = 'craigslistScrapy.spiders'

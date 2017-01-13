@@ -4,7 +4,6 @@ craigslistScrapy/items.py
 craigslistScrapy/middlewares.py
 craigslistScrapy/pipelines.py
 craigslistScrapy/settings.py
-craigslistScrapy/test.py
 craigslistScrapy/spiders/CLQueryWithArgsNoUserInfo.py
 craigslistScrapy/spiders/CLQueryWithArgsandUserInfo.py
 craigslistScrapy/spiders/__init__.py

@@ -59,7 +59,10 @@ class CraigsListSpider(scrapy.Spider):
                 listing['cityName'] = None
                 cityName = None
             try:
-                listing['description'] = extract_with_css('#postingbody')
+                # To get array of all line breaks
+                # listing['description'] = response.css('#postingbody::text').extract()
+                # To get string of all line breaks
+                listing['description'] = ' '.join(response.css('#postingbody::text').extract())
             except: listing['description'] = None
             try:
                 listing['imageUrls'] = response.css('a.thumb::attr(href)').extract()
@@ -89,7 +92,10 @@ class CraigsListSpider(scrapy.Spider):
                 listing['updateDate'] = dateinfo[2]
             except: listing['updateDate'] = None
             try:
-                listing['attributes'] = response.css('.attrgroup span').extract()
+                # To get array of all line breaks with html
+                # listing['attributes'] = response.css('.attrgroup span').extract()
+                # To get string of all line breaks
+                listing['attributes'] = ' '.join(response.css('.attrgroup span b::text').extract())
             except: listing['attributes'] = None
 
             # Get map accuracey
@@ -106,12 +112,15 @@ class CraigsListSpider(scrapy.Spider):
             except:
                 isMapAccurate = False
 
-
             print('lat = ', lat)
             print('lng = ', lng)
             print('isMapAccurate = ', isMapAccurate)
             print('cityName = ', cityName)
             listing['locAccuracy'] = 'highest' if all([not(lat is None), not(lng is None), isMapAccurate]) else 'high' if all([not(lat is None), not(lng is None), not isMapAccurate]) else 'medium' if cityName else 'low'
+
+            try:
+                listing['sellerUrl'] = response.urljoin(extract_with_css('#replylink::attr(href)'))
+            except: listing['sellerUrl'] = None
 
             # Leave all seller info blank
             listing['sellerName'] = None

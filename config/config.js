@@ -16,6 +16,7 @@ module.exports = {
     PORT: 3015
     // TODO: add postgreSQL uri
     // DB_URI: 'mongodb://localhost/authentication'
-  }
+  },
+  ELASTIC_SEARCH_URI: 'http://localhost:9200'
 
 }

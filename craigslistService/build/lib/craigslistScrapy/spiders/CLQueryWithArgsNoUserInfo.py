@@ -7,7 +7,24 @@ class CraigsListSpider(scrapy.Spider):
 
     def start_requests(self):
         try:
-            search_url = 'http://%s.craigslist.%s/search/sss?query=%s' % (self.search_city, self.search_domain, self.search_query)
+            try: area = self.search_area
+            except: area = 'sfo'
+            try:
+                if not self.search_subarea.lower() == "none":
+                    subarea = str(self.search_subarea) + '/'
+                else: subarea = ''
+            except: subarea = ''
+            try: domain = self.search_domain
+            except: domain = 'org'
+            try: query = self.search_query
+            except: query = 'macbook'
+            try: category = self.search_category
+            except: category = 'sss'
+            try: sort = self.search_sort
+            except: sort = 'rel'
+
+            search_url = 'http://%s.craigslist.%s/search/%s%s?query=%s&sort=%s' % (area, domain, subarea, category, query, sort)
+
             yield scrapy.Request(search_url)
         except:
             print(' ****** Error Loading argumnets  ****** ')
@@ -131,4 +148,4 @@ class CraigsListSpider(scrapy.Spider):
             listing['specs'] = {} #get specs from amazon
             listing['processingStatus'] = 'fresh' # satus of listing processing
 
-            yield listing
+            yield dict(listing)

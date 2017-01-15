@@ -50,7 +50,7 @@ class List extends React.Component {
   }
 }
 
-const ResultList = props => (
+export const ResultList = props => (
   <div>
     <div>
       {props.listings.map((listing, index) =>
@@ -61,7 +61,6 @@ const ResultList = props => (
 );
 
 
-export default ResultList;
 
 
       // <div className='col-md-6'>

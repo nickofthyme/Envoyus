@@ -3,7 +3,97 @@ $font1: 'Pacifico', cursive;
 $headerText: 'Open Sans', sans-serif;
 
 body {
-    opacity: .9;
+  // opacity: .9;
+  margin: 0;
+  padding: 0;
+}
+
+$greyed-color: #999;
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: $greyed-color;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: $greyed-color;
+  opacity: 1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: $greyed-color;
+  opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $greyed-color;
+}
+
+.subheader {
+  color: #666;
+  font-size: 20px;
+}
+
+.splash-ctn {
+  // background-color: red;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-content-ctn {
+  width: 1080px;
+  height: 560px;
+}
+
+.splash-image-ctn {
+  background:linear-gradient(135deg, #ffefd3 0%, #fcdece 53%, #fdab93 100%) !important;;
+}
+
+.splash-panel {
+  // background-color: black;
+  height: 560px;
+}
+
+.splash-nav {
+  // background-color: lightpink;
+  height: 60px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  z-index: 2;
+}
+
+.nav-links-ctn {
+  float: right;
+  margin: 20px 30px 20px 30px;
+  font-size: 14px;
+}
+
+.splash-intro-text {
+  // background-color: lightsalmon;
+  position: relative;
+  top: 30%;
+  width: 700px;
+  height: 200px;
+}
+
+.splash-search-ctn {
+  border-radius: 5px;
+  box-shadow: 0 0 4px #ccc;
+  background-color: white;
+  // border: 1px solid #ccc;
+  width: 1080px;
+  height: 72px;
+  // padding: 15px;
+  position: relative;
+  bottom: -40%
+}
+
+.splash-recommend {
+  width: 1080px;
+  height: 1920px;
+  margin-top: 36px;
+}
+
+.logo-text {
+  font-size: 20px;
 }
 
 input{
@@ -16,10 +106,25 @@ Navbar{
   border-radius: 0%
 }
 
-#logocolor{
-  color: #45B3FF;
+.navbar-default {
+  background-color: white;
+  border: 0;
 }
 
+.logocolor{
+  color: #76cede;
+}
+
+.logosmall {
+  background-image: url("../helixlogo.small.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 35px;
+  height: 57px;
+  position: relative;
+  top: -17px;
+  float: left;
+}
 
 .navbar {
   border-radius: 0px;
@@ -46,7 +151,6 @@ a.logo{
 }
 
 .footer{
-
   text-align: center;
   padding: 20px 0px;
   background: #222;
@@ -59,7 +163,6 @@ a.logo{
   font-family: $headerText;
   font-size: 30px;
   color: grey;
-  content-align: center;
   text-align: center;
   width: 500px;
 }

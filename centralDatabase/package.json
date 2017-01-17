@@ -1,0 +1,21 @@
+{
+  "name": "central-database",
+  "version": "1.0.0",
+  "description": "PostgresQL central database to store listings",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "psql -f envoyus.sql",
+    "drop": "psql -c 'drop database envoyus_db'"
+  },
+  "author": "team blend",
+  "license": "ISC",
+  "dependencies": {
+    "faker": "^3.1.0",
+    "graphql": "^0.8.2",
+    "lodash": "^4.17.4",
+    "pg": "^6.1.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.29.0"
+  }
+}

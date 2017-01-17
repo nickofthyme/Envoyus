@@ -15,14 +15,17 @@ const Listing = db.define('listing', {
   // lng: Sequelize.DECIMAL,
   price: Sequelize.DECIMAL,
   priceUnit: Sequelize.STRING,
-  imageUrls: Sequelize.ARRAY,
+  imageUrls: Sequelize.ARRAY(Sequelize.STRING),
   postDate: Sequelize.DATE,
   updateDate: Sequelize.DATE,
   scrapeDate: Sequelize.DATE,
-  dateAddedToDb: Sequelize.NOW,
+  dateAddedToDb: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
+  },
   processingStatus: Sequelize.STRING,
-  specs: Sequelize.ARRAY,
-  sellerUrl: Sequelize.STRING,
+  specs: Sequelize.ARRAY(Sequelize.STRING),
+  sellerUrl: Sequelize.STRING
   // sellerEmail: Sequelize.STRING,
   // sellerName: Sequelize.STRING,
   // sellerPhoneNumber: Sequelize.STRING

@@ -20,4 +20,4 @@ const Product = db.define('product', {
   productDescription: Sequelize.STRING,
 });
 
-module.exports = {History, Product};
+module.exports = {PriceHistory, Product};

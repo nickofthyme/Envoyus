@@ -6,5 +6,5 @@ CREATE DATABASE envoyus_db OWNER blend_admin;
 \c envoyus_db blend_admin
 -- Enable PostGIS (includes raster)
 CREATE EXTENSION postgis;
--- Quit from postgress shell
+-- Quit from postgres shell
 \q

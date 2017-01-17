@@ -19,8 +19,8 @@ const DB_CONFIG = require('../../config/config.js').CENTRAL_DB;
 // Configure database properties
 const config = {
   database: DB_CONFIG.DATABASE,
-  username: DB_AUTH.username,
-  password: DB_AUTH.password,
+  username: 'blend_admin'|| DB_AUTH.username,
+  password: 'jmonlee' || DB_AUTH.password,
   host: DB_CONFIG.HOST,
   port: DB_CONFIG.PORT
 }
@@ -35,7 +35,7 @@ const db = new Sequelize(config.database, config.username, config.password, {
     idle: 10000
   },
   port: config.port,
-  benchmark: false // Print query execution time in milliseconds when logging SQL.
+  benchmark: false
 });
 
 // Check connection to database

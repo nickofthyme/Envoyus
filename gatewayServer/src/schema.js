@@ -1,8 +1,9 @@
 const axios = require('axios');
 const {flatten} = require('lodash');
-const config = require('../../config/config.privatekeys').amazon;
+const config = require('../../config/config');
+const amazonConfig = require('../../config/config.privatekeys').amazon;
 const AmazonSearch = require('./AmazonSearch');
-const amazonSearch = new AmazonSearch(config);
+const amazonSearch = new AmazonSearch(amazonConfig);
 
 const {
   GraphQLSchema,
@@ -102,7 +103,7 @@ const Query = new GraphQLObjectType({
           if (args.size) { postReq.size = args.size; }
           if (args.from) { postReq.from = args.from; }
 
-          request = await axios.post('http://louispvb.com:9200/cl/listing/_search?pretty', postReq);
+          request = await axios.post(config.ELASTIC_SEARCH_URI + '/cl/listing/_search?pretty', postReq);
         } catch(error) {
           console.error('NonFatal: ' + error);
         }

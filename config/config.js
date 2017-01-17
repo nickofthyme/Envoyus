@@ -19,5 +19,6 @@ module.exports = {
   },
   PRODUCT_SEARCH: {
     PORT: 3015
-  }
+  },
+  ELASTIC_SEARCH_URI: 'http://localhost:9200'
 }

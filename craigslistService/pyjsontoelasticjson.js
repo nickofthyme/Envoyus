@@ -14,7 +14,7 @@ json = JSON.parse(json.toString());
 //{"index":{"_id": String(i)}}) + '\n' +
 var newjson = json.map((listing, i) =>
   JSON.stringify({ "index": { "_index": "cl", "_type": "listing" }}) + '\n' + JSON.stringify(listing)).join('\n');
-fs.writeFileSync('ipad-formated.json', newjson);
 
 // run curl with file name in terminal
 // curl -s -XPOST http://louispvb.com:9200/_bulk --data-binary @final.json
+

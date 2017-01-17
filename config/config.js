@@ -1,11 +1,11 @@
 module.exports = {
   APP_NAME: 'envoyus',
   GATEWAY_SERVER: {
-    PORT: 3000 || process.env.PORT
+    PORT: process.env.PORT || 3000
   },
   CENTRAL_DB: {
     DATABASE: 'envoyus_db',
-    HOST: 'localhost',
+    HOST: '172.17.0.3' || 'localhost',
     PORT: 5432
   },
   LOGIN_SERVICE: {

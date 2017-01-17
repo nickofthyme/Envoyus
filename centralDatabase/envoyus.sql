@@ -1,5 +1,5 @@
 -- Create superuser
-CREATE USER blend_admin PASSWORD 'jmonlee!' SUPERUSER;
+CREATE USER blend_admin PASSWORD 'jmonlee' SUPERUSER;
 -- Create PostgresQL database named envoyus_db
 CREATE DATABASE envoyus_db OWNER blend_admin;
 -- Connect to envoyus_db as the superuser

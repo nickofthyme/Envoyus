@@ -25,6 +25,25 @@ $greyed-color: #999;
   color: $greyed-color;
 }
 
+.input-default {
+  border: 0;
+  font-size: 18;
+  color: #666;
+  outline: none;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+
+.input-label {
+  font-size: 14;
+  color: #666;
+}
+
+.input-ctn-active-style {
+  border-bottom: 2px solid #ade8d4;
+}
+
 .subheader {
   color: #666;
   font-size: 20px;
@@ -78,12 +97,22 @@ $greyed-color: #999;
   border-radius: 5px;
   box-shadow: 0 0 4px #ccc;
   background-color: white;
-  // border: 1px solid #ccc;
   width: 1080px;
   height: 72px;
-  // padding: 15px;
   position: relative;
-  bottom: -40%
+  bottom: -40%;
+  display: flex;
+  flex-direction: row;
+}
+
+.search-btn {
+  width: 200px;
+  height: 45px;
+  background-color:rgb(99.9%, 37.4%, 37.4%);
+  color: white;
+}
+.search-btn:hover {
+  color: white;
 }
 
 .splash-recommend {

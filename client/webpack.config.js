@@ -34,11 +34,10 @@ const baseWebpackConfig = {
       loader: 'eslint',
       exclude: /node_modules/
     }],
-
     loaders: [{
       test: /\.(jsx|js)$/,
       loader: 'babel',
-      exclude: /node_modules/
+      exclude: /node_modules/,
     }, {
       test: /\.scss$/,
       loader: ExtractTextPlugin.extract('css!sass')
@@ -52,19 +51,10 @@ const baseWebpackConfig = {
     ]
   },
 
-  //  {
-  //     test: /\.(jpg|png)$/,
-  //     loader: 'url-loader',
-  //     options: {
-  //       limit: 25000
-  //     }
-  //   }, 
-
   sassLoader: {
     includePaths: ['src/assets/styles']
   },
   
-
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
 

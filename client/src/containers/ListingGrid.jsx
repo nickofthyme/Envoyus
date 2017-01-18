@@ -1,7 +1,8 @@
 import React from 'react';
 import { VCenter } from './Center';
+import axios from 'axios';
 
-export const ListingItem = ({width, ...props}) => {
+export const ListingItem = ({width, data, ...props}) => {
   return (
     <div style={{
       width,
@@ -11,9 +12,11 @@ export const ListingItem = ({width, ...props}) => {
       <div style={{
         width: '100%',
         height: '85%',
-        backgroundColor: 'lightgreen',
+        backgroundImage: `url('${data.imageUrls[0]}')`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
       }} />
-        <div><span>$50</span> <span>Listing Title</span></div>
+        <div><span>{data.price}</span> <span>{data.title}</span></div>
     </div>
   )
 };
@@ -25,10 +28,10 @@ export const ListingItemFill = props => (
   }} /> 
 );
 
-export const ListingGrid = ({rows, columns, height, listData, ...props}) => {
+export const ListingGrid = ({rows, columns, height, store, ...props}) => {
   const itemWidthPercent = 95 / columns;
-  const fillCount = columns - listData.length % columns;
-  const filler = Array(fillCount).fill(0).map(ListingItemFill);
+  const fillCount = columns - store.length % columns;
+  const filler = Array(fillCount).fill(0).map((_, i) => <ListingItemFill width={ itemWidthPercent + '%' } key={-i-1} />);
   return (
     <div style={{
       width: '100%',
@@ -39,7 +42,7 @@ export const ListingGrid = ({rows, columns, height, listData, ...props}) => {
       justifyContent: 'space-between',
     }}>
     {
-      listData.map((data, i) => 
+      store.map((data, i) => 
         <ListingItem 
           data={ data } 
           width={ itemWidthPercent + '%' } 

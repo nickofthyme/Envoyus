@@ -18,11 +18,11 @@ const DB_CONFIG = require('../../config/config.js').CENTRAL_DB;
 
 // Configure database properties
 const config = {
-  database: DB_CONFIG.DATABASE,
-  username: 'blend_admin'|| DB_AUTH.username,
-  password: 'jmonlee' || DB_AUTH.password,
-  host: DB_CONFIG.HOST,
-  port: DB_CONFIG.PORT
+  database: 'envoyus_db' ||DB_CONFIG.DATABASE,
+  username: 'postgres'|| DB_AUTH.username,
+  password: 'mysecretpassword' || DB_AUTH.password,
+  host: 'louispvb.com' || DB_CONFIG.HOST,
+  port: '5432'|| DB_CONFIG.PORT
 }
 
 // set up envoyus PostgresQL database

@@ -19,10 +19,10 @@ const Listing = db.define('listing', {
   postDate: Sequelize.DATE,
   updateDate: Sequelize.DATE,
   scrapeDate: Sequelize.DATE,
-  dateAddedToDb: {
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW
-  },
+  // dateAddedToDb: {
+  //   type: Sequelize.DATE,
+  //   defaultValue: Sequelize.NOW
+  // },
   processingStatus: Sequelize.STRING,
   specs: Sequelize.ARRAY(Sequelize.STRING),
   sellerUrl: Sequelize.STRING

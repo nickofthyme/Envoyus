@@ -4,8 +4,8 @@ module.exports = {
     PORT: process.env.PORT || 3000
   },
   CENTRAL_DB: {
-    DATABASE: 'envoyus_db',
-    HOST: '172.17.0.3' || 'localhost',
+    DATABASE: 'envoyus_test',
+    HOST: 'louispvb.com' || '172.17.0.3' || 'localhost',
     PORT: 5432
   },
   LOGIN_SERVICE: {

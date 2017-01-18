@@ -48,3 +48,51 @@ services:
 # volumes:
 #   wwwroot:
 #     driver: local
+  #    - ./server:/server-src # "HOST_DIR:CONTAINER_DIR"
+  #   links:
+  #    - redis
+  #    - postgres
+  #   environment:
+  #    - NODE_ENV=docker
+  #    - DISPLAY=:99 # xvfb => for selenium
+  #   container_name: clientdocker
+  #   # sleep 10 => make some time for loading the server
+  #   # command: [
+  #   #   bash, -c,
+  #   #   "source ~/.nvm/nvm.sh \
+  #   #   && cd /webpack-react-example \
+  #   #   && gulp unit-server \
+  #   #   && (node ./server \
+  #   #   & Xvfb :99 -ac \
+  #   #   & source ~/.nvm/nvm.sh \
+  #   #   && cd /webpack-react-example \
+  #   #   && sleep 10 \
+  #   #   && npm run e2e)"
+  #   # ]
+  # gateway_server:
+  #
+  # # redis:
+  # #   image: redis
+  # #   ports:
+  # #    - "6379:6379"
+  # #   container_name: wre-redis
+  #
+  # elastic_search:
+  #   dockerfile: ./dockers/elsearch/Dockerfile
+  #   ports:
+  #     - "9200:9200"
+  #   volumes:
+  #     - esdata:/usr/share/elasticsearch/data
+  #   container_name: esdocker
+  #
+  # postgres:
+  #   image: mdillon/postgis
+  #   volumes:
+  #     - ./db/pgdata:/pgdata
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     - POSTGRES_USER=blend_admin
+  #     - POSTGRES_PASSWORD=jmonlee
+  #     - POSTGRES_DB=envoyus_db
+  #   container_name: pgdocker

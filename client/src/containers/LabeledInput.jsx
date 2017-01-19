@@ -7,37 +7,25 @@ export class LabeledInput extends React.Component {
       focused: false
     };
   }
+
   render() {
-    const {inputStyle, activeStyle, labelStyle, label, width, ...props} = this.props;
-    const currentStyle = this.state.focused ? Object.assign(inputStyle || {}, activeStyle) : inputStyle;
+    const {inputClass, activeClass, showIcon, labelStyle, label, width, ...props} = this.props;
+    const currentClass = this.state.focused ? activeClass : inputClass || 'input-ctn-style';
     const dwidth = width || 400;
-    console.log(this.state.focused)
+    const icon = showIcon ? <i className="fa fa-search" /> : null;
     return (
-      <div style={{
-        width: dwidth,
-      }}>
-        <span style={{
-          fontSize: 14,
-          color: '#666',
-          ...labelStyle
-        }}>
-          {label}
-        </span>
-        <br/>
-        <div style={{
-          ...currentStyle
-        }}>
-          <input {...props} type='text' style={{
-              border: 0,
-              fontSize: 18,
-              color: '#666',
-              outline: 'none',
-              paddingLeft: 0,
-              paddingRight: 0,
-              width: '100%',
-            }}
+      <div style={{ width: dwidth }}>
+        {
+          label !== undefined &&
+          <span className='input-label' style={labelStyle}>
+            {label}
+          </span>
+        }
+        { label !== undefined && <br />}
+        <div className={currentClass}>
+          <div><input {...props} type='text' className='input-default'
             onFocus={() => this.setState({focused: true})}
-            onBlur={() => this.setState({focused: false})} />
+            onBlur={() => this.setState({focused: false})} /></div>
         </div>
       </div>
     )

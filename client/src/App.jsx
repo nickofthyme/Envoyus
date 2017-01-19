@@ -1,6 +1,9 @@
+import fixtures from './fixtures';
+
 import React from 'react';
 import axios from 'axios';
-import { HCenter, LabeledInput, ListingGrid } from './containers';
+import { HCenter, LabeledInput, ListingGrid, LabeledDropdown } from './containers';
+import { Button } from 'react-bootstrap';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -45,11 +48,26 @@ export default class App extends React.Component {
                 }}>
                   <LabeledInput 
                     label='Search' 
-                    placeholder='Nintendo DS' 
+                    placeholder='Macbook Pro' 
                     width='100%'
-                    activeStyle={{
-                      borderBottom: '2px solid #ade8d4'
-                    }} />
+                    activeClass='input-ctn-active-style' />
+                </div>
+                <div style={{
+                  width: '14%',
+                  padding: '15px 0 0 15px',
+                  height: '100%',
+                }}>
+                  <LabeledDropdown
+                    label='City'
+                    width='100%'
+                    activeClass='input-ctn-active-style' />
+                </div>
+                <div style={{
+                  width: '20%',
+                  padding: '15px 0 0 15px',
+                  height: '100%',
+                }}>
+                  <Button bsSize='lg' bsClass='btn search-btn'>Search</Button>
                 </div>
               </div>
             </div>
@@ -60,9 +78,9 @@ export default class App extends React.Component {
           <div className='splash-recommend'>
             <p className='subheader'>Recommended</p>
             <ListingGrid 
-              height='360px' 
-              listData={[1,2,3,4,5,6,7,8,9,10]}
-              columns={4} />
+              height='320px' 
+              listData={fixtures.listData}
+              columns={3} />
           </div>
         </HCenter>
       </div>

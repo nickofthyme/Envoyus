@@ -1,10 +1,11 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import App from './src/App.jsx';
+
+import RouterView from './src/RouterView';
 
 import './src/assets/styles/main.scss';
 
 ReactDOM.render(
-  <App />,
+  RouterView,
   document.getElementById('app'),
 );

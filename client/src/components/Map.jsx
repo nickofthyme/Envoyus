@@ -8,8 +8,8 @@ import { GoogleMapLoader, GoogleMap, Marker, withGoogleMap } from 'react-google-
 const ShowMap = withGoogleMap(props => (
   <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={9}
-    defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
+    defaultZoom={14}
+    defaultCenter={{ lat: -37.783591, lng: 122.408949 }}
     center={{ lat: Number(props.currentLocation.latitude), lng: Number(props.currentLocation.longitude) }}
   >
     {props.markers.map((marker, index) => (
@@ -54,8 +54,7 @@ export class Map extends React.Component {
         />
         <ShowMap
           containerElement={
-            // <div style={{ width: 500, height: 500 }} />
-            <div className="map" style={{ width: 1000, height: 500, margin: 30 }} />
+            <div className="map" style={{ width: '100%', height: '100%' }} />
           }
           mapElement={
             <div style={{ height: '100%' }} />

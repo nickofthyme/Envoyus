@@ -32,7 +32,14 @@ class CraigsListSpider(scrapy.Spider):
 
     def parse(self, response):
         for href in response.css('.result-row a::attr(href)').extract():
-            yield scrapy.Request(response.urljoin(href), callback=self.parse_list)
+            referral_url = response.request.url
+
+            new_site = response.urljoin(href)
+            area = new_site.split('.')[0].split('//')[1]
+
+            if area in referral_url:
+                print('--- match --> ', new_site)
+                yield scrapy.Request(new_site, callback=self.parse_list)
 
         next_page = response.css('a.button.next::attr(href)').extract_first()
 

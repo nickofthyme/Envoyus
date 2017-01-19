@@ -10,7 +10,9 @@
     "start": "nodemon --harmony src",
     "test": "node --harmony src/index.js & mocha --bail --harmony test/gateway.spec.js; pkill -n node",
     "lint": "node_modules/eslint/bin/eslint.js --ext js, . && echo 'No JavaScript lint errors'",
-    "lint:fix": "node_modules/eslint/bin/eslint.js --ext js, . --fix"
+    "lint:fix": "node_modules/eslint/bin/eslint.js --ext js, . --fix", 
+    "dockbuild": "docker build -t server:dev .",
+    "dockrun": "docker run -d --name serverContainer -p 3000:3000 server:dev"
   },
   "author": "BLeNd-HR51",
   "license": "ISC",
@@ -26,6 +28,7 @@
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
+    "nodemon": "^1.11.0",
     "request": "^2.79.0",
     "webpack": "^1.14.0",
     "xml2js": "^0.4.17"

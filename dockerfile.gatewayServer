@@ -2,6 +2,7 @@ FROM node:latest
 
 # Create app directory
 RUN mkdir -p /gatewayServer
+RUN mkdir -p /
 RUN mkdir -p /config
 WORKDIR /gatewayServer
 

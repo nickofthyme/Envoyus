@@ -206,7 +206,7 @@ const getLocation = (locQuery) => {
     return error;
   });
 };
-
+hey = 'hey'
 
 let getNewjson = async (data, getLocation) => {
   data.reduce( (arr, location, i) => {
@@ -214,7 +214,7 @@ let getNewjson = async (data, getLocation) => {
     let lastIndex = arr.length - 1;
     if ( area !== null && subarea === null ) {
       console.log('New: area = '+ areaDescription, 'subarea = '+ subareaDescription);
-      let res = await getLocation(parseLocation(areaDescription, subareaDescription, null));
+      let res = hey//await getLocation(parseLocation(areaDescription, subareaDescription, null));
       arr[ lastIndex + 1 ] = {
         area,
         areaDescription,

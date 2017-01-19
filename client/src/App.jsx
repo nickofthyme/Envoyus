@@ -1,33 +1,16 @@
+import fixtures from './fixtures';
+
 import React from 'react';
 import axios from 'axios';
 import { HCenter, LabeledInput, ListingGrid, LabeledDropdown } from './containers';
 import { Button } from 'react-bootstrap';
-import Relay from 'react-relay';
 
-// RecommendGrid = Relay.createContainer(ListingGrid, {
-//   fragments: {
-//     store: () => Relay.QL`
-//       fragment on Query {
-//         craigslist(query: "i5 macbook", from: 20, size: 8) { 
-//           results {
-//             title
-//             price
-//             cityName
-//             imageUrls
-//           } 
-//         }
-//       }
-//     `
-//   }
-// })
-
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    console.log(this.props.store);
     return (
       <div className='splash-ctn'>
         <div className='splash-panel'>
@@ -65,7 +48,7 @@ class App extends React.Component {
                 }}>
                   <LabeledInput 
                     label='Search' 
-                    placeholder='Nintendo DS' 
+                    placeholder='Macbook Pro' 
                     width='100%'
                     activeClass='input-ctn-active-style' />
                 </div>
@@ -95,46 +78,12 @@ class App extends React.Component {
           <div className='splash-recommend'>
             <p className='subheader'>Recommended</p>
             <ListingGrid 
-              height='360px' 
-              store={[
-                {
-                  "title": "Apple MacBook Air 11.6\" 11  i5  1.6Ghz 4GB 128GB AppleCare",
-                  "price": "750",
-                  "cityName": "los altos",
-                  "imageUrls": [
-                    "https://images.craigslist.org/00l0l_dZkW9tcn1af_600x450.jpg",
-                    "https://images.craigslist.org/00s0s_7OYZSLh9Uxf_600x450.jpg",
-                    "https://images.craigslist.org/00909_kxgrKusHVvY_600x450.jpg",
-                    "https://images.craigslist.org/00Q0Q_9PrdRg7eMZY_600x450.jpg",
-                    "https://images.craigslist.org/00707_iscddNdTefa_600x450.jpg",
-                    "https://images.craigslist.org/00f0f_bBJgsAs1ky6_600x450.jpg",
-                    "https://images.craigslist.org/00Z0Z_D9Mmt0wEOP_600x450.jpg"
-                  ]
-                },
-              ]}
-              columns={4} />
+              height='320px' 
+              listData={fixtures.listData}
+              columns={3} />
           </div>
         </HCenter>
       </div>
     );
   }
 }
-
-App = Relay.createContainer(App, {
-  fragments: {
-    store: () => Relay.QL`
-      fragment on Query {
-        craigslist(query: "i5 macbook", from: 20, size: 8) { 
-          results {
-            title
-            price
-            cityName
-            imageUrls
-          } 
-        }
-      }
-    `
-  }
-})
-
-export default App;

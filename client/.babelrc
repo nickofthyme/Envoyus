@@ -1,14 +1,7 @@
 {
   "plugins": [
     "transform-class-properties",
-    "transform-object-rest-spread",
+    "transform-object-rest-spread"
   ],
-  "presets": [
-    {
-      "plugins": [
-        "./babelRelayPlugin"
-      ]
-    },
-    "es2015",
-    "react"]
+  "presets": ["es2015","react"]
 }

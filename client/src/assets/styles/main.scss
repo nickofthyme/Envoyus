@@ -9,6 +9,9 @@ body {
 }
 
 $greyed-color: #999;
+$text-color: #666;
+$hard-border: 1px solid #e0e0e0;
+$light-border: 1px solid #efefef;
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
   color: $greyed-color;
@@ -22,6 +25,102 @@ $greyed-color: #999;
   opacity: 1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $greyed-color;
+}
+
+@mixin top-bar-common() {
+  padding: 13px 15px 0 15px;
+  color: $text-color;
+}
+
+.main-top-bar {
+  background-color: white;
+  border-bottom: $hard-border;
+  height: 52px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+  top: 0;
+}
+
+.top-bar-logo {
+  width: 64px;
+  padding: 0px 0 0 10px;
+  color: $text-color;
+  font-size: 38px;
+  cursor: pointer; cursor: hand;
+  border-right: $hard-border;
+}
+
+.top-bar-search-ctn {
+  @include top-bar-common();
+  flex: 4;
+}
+
+.top-bar-nav-ctn {
+  @include top-bar-common();
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.results-ctn {
+  width: 60vw;
+  overflow: scroll;
+}
+
+.search-settings-ctn {
+}
+
+.setting-row {
+  background-color: white;
+  border-bottom: $light-border;
+  display: flex;
+  flex-direction: row;
+  min-height: 64px;
+  padding: 24px 20px 0px 10px;
+  color: $text-color;
+}
+
+.result-count {
+  color: $text-color;
+  font-weight: 500;
+  padding-top: 10px;
+}
+
+.final-setting-row {
+  border-bottom: $hard-border;
+  display: flex;
+  min-height: 52px;
+  padding: 8px 10px 8px 10px;
+  justify-content: space-between;
+}
+
+.setting-row-label {
+  flex: 1;
+}
+
+.setting-row-cntrl {
+  flex: 4;
+}
+
+.search-results {
+  padding: 10px;
+}
+
+.map-ctn {
+  background-color: lightgrey;
+  width: 40vw;
+}
+
+.list-item-price {
+  font-weight: 500;
+}
+
+.list-item-title {
   color: $greyed-color;
 }
 
@@ -40,6 +139,12 @@ $greyed-color: #999;
   color: #666;
 }
 
+.input-ctn-style {
+  // border: 3px solid black;
+  display: flex;
+  flex-direction: row;
+}
+
 .input-ctn-active-style {
   border-bottom: 2px solid #ade8d4;
 }
@@ -47,6 +152,11 @@ $greyed-color: #999;
 .subheader {
   color: #666;
   font-size: 20px;
+}
+
+.results-page {
+  width: 100vw;
+  height: 100vh;
 }
 
 .splash-ctn {
@@ -64,13 +174,17 @@ $greyed-color: #999;
   background:linear-gradient(135deg, #ffefd3 0%, #fcdece 53%, #fdab93 100%) !important;;
 }
 
+.split-pane-horiz {
+  display: flex;
+  height: calc(100% - 52px);
+  width: 100vw;
+}
+
 .splash-panel {
-  // background-color: black;
   height: 560px;
 }
 
 .splash-nav {
-  // background-color: lightpink;
   height: 60px;
   position: absolute;
   top: 0px;
@@ -81,12 +195,12 @@ $greyed-color: #999;
 
 .nav-links-ctn {
   float: right;
+  text-align: right;
   margin: 20px 30px 20px 30px;
   font-size: 14px;
 }
 
 .splash-intro-text {
-  // background-color: lightsalmon;
   position: relative;
   top: 30%;
   width: 700px;

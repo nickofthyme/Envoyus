@@ -6,6 +6,7 @@ bundle.js.map
 __pycache__
 *.pyc
 *.pkl
+*.json
 
 __pycache__
 

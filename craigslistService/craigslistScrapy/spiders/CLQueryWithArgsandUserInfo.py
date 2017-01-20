@@ -2,6 +2,9 @@ import scrapy
 from datetime import datetime
 from craigslistScrapy.items import CraigslistItem
 
+# Run by  
+# scrapy crawl clqueryallcities -a search_query=ipad -o ipad-all-cities.json
+
 class CraigsListSpider(scrapy.Spider):
     name = 'clquerywithargsuserinfo'
 

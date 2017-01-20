@@ -10,8 +10,8 @@ var fs = require('fs');
 // https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
 
 // filename on root to convert to elasticsearch data
-var filename = 'mbp-sfbay'
-
+var filename = '../gatewayServer/listingsWithLocs/mbp-sfbay-FINAL'
+// require('../gatewayServer/listingsWithLocs/mbp-sfbay-FINAL')
 var json = fs.readFileSync( filename + '.json' );
 json = JSON.parse(json.toString());
 //{"index":{"_id": String(i)}}) + '\n' +

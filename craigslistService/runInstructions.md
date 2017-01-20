@@ -13,3 +13,5 @@ To run the "spider", use the following syntax
 So, for querying San Francisco, you could
 
 [ scrapy crawl cityoncraigslist -o sanfrancisco.json ]
+
+'scrapy crawl clqueryallcities -a search_query=ipad -o ipad-all-cities.json'

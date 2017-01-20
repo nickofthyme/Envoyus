@@ -140,10 +140,10 @@ class CraigsListSpider(scrapy.Spider):
             except:
                 isMapAccurate = False
 
-            print('lat = ', lat)
-            print('lng = ', lng)
-            print('isMapAccurate = ', isMapAccurate)
-            print('cityName = ', cityName)
+            # print('lat = ', lat)
+            # print('lng = ', lng)
+            # print('isMapAccurate = ', isMapAccurate)
+            # print('cityName = ', cityName)
             listing['locAccuracy'] = 'highest' if all([not(lat is None), not(lng is None), isMapAccurate]) else 'high' if all([not(lat is None), not(lng is None), not isMapAccurate]) else 'medium' if cityName else 'low'
 
             try:
